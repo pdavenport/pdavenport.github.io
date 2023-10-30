@@ -42,15 +42,12 @@ export default function TestPage() {
   }, [responses]);
 
   return (
-    <div
-      style={{ height: "calc(100% - 88px)", width: "calc(100% - 88px)" }}
-      className="flex flex-col h-screen text-green-500 border border-green-500 m-10 p-6 absolute w-screen"
-    >
+    <div className="flex flex-col text-green-500 border-[2.75px] border-green-500 m-10 p-6 absolute h-[calc(100%-88px)] w-[calc(100%-88px)] bg-[url('/public/images/grid.png')]">
       <textarea
         ref={textareaRef}
         value={responses.join("\n")}
         readOnly
-        className="bg-black text-green-500 border-none font-mono text-lg w-full overflow-hidden h-full outline-none"
+        className="text-green-500 border-none font-mono text-lg w-full overflow-hidden h-full outline-none"
         style={{ resize: "none" }}
         onClick={handleTextareaClick}
       />
@@ -59,7 +56,7 @@ export default function TestPage() {
           ref={inputRef}
           type="text"
           placeholder=""
-          className="bg-black text-green-500 border-none font-mono text-lg py-1 w-full outline-none"
+          className="text-green-500 border-none font-mono text-lg py-1 w-full outline-none"
           onKeyDown={handleCommand}
         />
       </div>
