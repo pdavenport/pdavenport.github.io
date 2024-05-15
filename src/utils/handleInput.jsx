@@ -1,52 +1,67 @@
 import { allCommands, directories } from "@constants/termConstants";
-export const handleInput = (command, currentPage, responses) => {
+
+////// TODO:
+// handle passing "cd" with no arguments
+
+const handleHelpCommands = (responses, terminalPrompt) => [
+  ...responses,
+  `${terminalPrompt} commands:`,
+  ...allCommands,
+];
+const handleChangeDirectory = (secondaryCommand, responses, terminalPrompt) => {
+  if (secondaryCommand === "..") {
+    return [`${terminalPrompt} ~`, ...responses];
+  }
+  // Implement more directory change logic here
+};
+const handleListDirectories = (responses, terminalPrompt) => [
+  ...responses,
+  `${terminalPrompt} directories:`,
+  ...directories,
+];
+const handlePrintWorkingDirectory = (
+  currentPage,
+  responses,
+  terminalPrompt
+) => {
+  if (currentPage === "~") {
+    return [...responses, `${terminalPrompt} ~/`];
+  }
+  return [`${terminalPrompt} ~/`, currentPage];
+};
+const handleClearScreen = () => Array(29).fill("");
+const handleDefaultCommand = (command, responses, terminalPrompt) => [
+  ...responses.slice(1),
+  `${terminalPrompt} ${command}`,
+];
+
+export const handleInput = (
+  command,
+  currentPage,
+  responses,
+  terminalPrompt
+) => {
   const commandArray = command.split(" ");
   const primaryCommand = commandArray[0];
   const secondaryCommand = commandArray[1];
-  const emptyScreen = Array(29).fill("");
 
   switch (primaryCommand) {
     case "help":
-      return [...responses, "commands:", ...allCommands];
+    case "commands":
+      return handleHelpCommands(responses, terminalPrompt);
     case "cd":
-      // emulate cd command once there are more directories
-      break;
+      return handleChangeDirectory(secondaryCommand, responses, terminalPrompt);
     case "ls":
-      // todo: return files in current directory
-      break;
+      return handleListDirectories(responses, terminalPrompt);
     case "pwd":
-      // print working directory
-      if (currentPage === "~") {
-        return [...responses, "~/"];
-      }
-      return ["~/", currentPage];
-    case "mkdir":
-      // make directory
-      break;
-    case "rmdir":
-      // remove directory
-      break;
-    case "rm":
-      // remove file
-      break;
-    case "mv":
-      // move file
-      break;
-    case "cp":
-      // copy file
-      break;
-    case "cat":
-      // print file contents
-      break;
-    case "less":
-      // print file contents one page at a time
-      break;
-    case "find":
-      // find file
-      break;
+      return handlePrintWorkingDirectory(
+        currentPage,
+        responses,
+        terminalPrompt
+      );
     case "clear":
-      return emptyScreen;
+      return handleClearScreen();
     default:
-      return (responses) => [...responses.slice(1), command];
+      return handleDefaultCommand(command, responses, terminalPrompt);
   }
 };
