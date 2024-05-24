@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import styles from "./visit.module.css";
 
 const Page = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
+  const [isChecked, setIsChecked] = useState(true);
   const dialogRef = useRef(null);
   const openRef = useRef(null);
   const formRef = useRef(null);
@@ -54,7 +54,7 @@ const Page = () => {
   const DesignOne = () => {
     return (
       <svg
-        class="w-9"
+        className="w-9"
         viewBox="0 0 969 955"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,16 +64,16 @@ const Page = () => {
           cy="320.191"
           r="133.191"
           stroke="currentColor"
-          stroke-width="20"
+          strokeWidth="20"
         ></circle>
         <circle
           cx="806.809"
           cy="320.191"
           r="133.191"
           stroke="currentColor"
-          stroke-width="20"
+          strokeWidth="20"
         ></circle>
-        <g class="eyes">
+        <g className="eyes">
           <circle
             cx="695.019"
             cy="587.733"
@@ -99,8 +99,8 @@ const Page = () => {
           fill="#FF1E1E"
         ></rect>
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
           fill="currentColor"
         ></path>
@@ -110,7 +110,7 @@ const Page = () => {
   const HeaderOne = () => {
     return (
       <header>
-        <div class="details">
+        <div className="details">
           <img
             src="https://avatars.githubusercontent.com/u/842246"
             width="48"
@@ -126,7 +126,7 @@ const Page = () => {
           </a>
         </div>
         <a
-          class="links"
+          className="links"
           href="https://jhey.dev/links"
           rel="noopener noreferrer"
           target="_blank"
@@ -136,24 +136,24 @@ const Page = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
           </svg>
         </a>
         <a
-          class="sponsor button invert"
+          className="sponsor button invert"
           href="https://github.com/sponsors/jh3y"
           rel="noreferrer noopener"
           target="_blank"
@@ -163,24 +163,24 @@ const Page = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
           </svg>
         </a>
         <a
-          class="follow button"
+          className="follow button"
           href="https://twitter.com/intent/follow?screen_name=jh3yy"
           rel="noreferrer noopener"
           target="_blank"
@@ -190,18 +190,18 @@ const Page = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
             />
           </svg>
@@ -213,7 +213,7 @@ const Page = () => {
   return (
     <>
       <a
-        class="bear-link"
+        className="bear-link"
         href="https://twitter.com/intent/follow?screen_name=jh3yy"
         target="_blank"
         rel="noreferrer noopener"
@@ -225,39 +225,39 @@ const Page = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          class="w-6 h-6"
+          className="w-6 h-6"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 0 1-.517.608 7.45 7.45 0 0 0-.478.198.798.798 0 0 1-.796-.064l-.453-.324a1.875 1.875 0 0 0-2.416.2l-.243.243a1.875 1.875 0 0 0-.2 2.416l.324.453a.798.798 0 0 1 .064.796 7.448 7.448 0 0 0-.198.478.798.798 0 0 1-.608.517l-.55.092a1.875 1.875 0 0 0-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 0 1-.064.796l-.324.453a1.875 1.875 0 0 0 .2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 0 1 .796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 0 1 .517-.608 7.52 7.52 0 0 0 .478-.198.798.798 0 0 1 .796.064l.453.324a1.875 1.875 0 0 0 2.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 0 1-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 0 0 1.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 0 1-.608-.517 7.507 7.507 0 0 0-.198-.478.798.798 0 0 1 .064-.796l.324-.453a1.875 1.875 0 0 0-.2-2.416l-.243-.243a1.875 1.875 0 0 0-2.416-.2l-.453.324a.798.798 0 0 1-.796.064 7.462 7.462 0 0 0-.478-.198.798.798 0 0 1-.517-.608l-.091-.55a1.875 1.875 0 0 0-1.85-1.566h-.344ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
         </svg>
-        <span class="sr-only">Open settings</span>
+        <span className="sr-only">Open settings</span>
       </button>
       <h1>check the settings.</h1>
-      <dialog ref={dialogRef} className={styles.dialogClass}>
+      <dialog ref={dialogRef}>
         <HeaderOne />
         <hr />
         <form ref={formRef}>
-          <label for="scheme">Color scheme</label>
-          <select autofocus name="scheme" id="scheme">
-            <option value="system">System</option>
-            <option value="light">Light</option>
+          <label htmlFor="scheme">Color scheme</label>
+          <select autoFocus name="scheme" id="scheme">
             <option value="dark">Dark</option>
+            <option value="light">Light</option>
           </select>
-          <label for="backdrop">Backdrop</label>
-          <label for="backdrop" class="switch">
+          <label htmlFor="backdrop">Backdrop</label>
+          <label htmlFor="backdrop" className="switch">
             <input
               name="backdrop"
-              class="sr-only"
+              className="sr-only"
               type="checkbox"
               role="switch"
               id="backdrop"
-              checked
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
             />
           </label>
-          <label for="duration">Duration(s)</label>
+          <label htmlFor="duration">Duration(s)</label>
           <input
             name="duration"
             type="range"
@@ -265,9 +265,9 @@ const Page = () => {
             min="0.1"
             max="2"
             step="0.1"
-            value="0.3"
+            defaultValue="0.3"
           />
-          <label for="translate">Translate(lh)</label>
+          <label htmlFor="translate">Translate(lh)</label>
           <input
             name="translate"
             type="range"
@@ -275,9 +275,9 @@ const Page = () => {
             min="0"
             max="20"
             step="1"
-            value="12"
+            defaultValue="12"
           />
-          <label for="scale">Scale</label>
+          <label htmlFor="scale">Scale</label>
           <input
             name="scale"
             type="range"
@@ -285,9 +285,9 @@ const Page = () => {
             min="0"
             max="1"
             step="0.01"
-            value="0.95"
+            defaultValue="0.95"
           />
-          <label for="blur">Blur(px)</label>
+          <label htmlFor="blur">Blur(px)</label>
           <input
             name="blur"
             type="range"
@@ -295,7 +295,7 @@ const Page = () => {
             min="0"
             max="40"
             step="1"
-            value="10"
+            defaultValue="10"
           />
           <hr />
           <footer>

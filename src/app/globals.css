@@ -1,3 +1,4 @@
+@import url('https://unpkg.com/normalize.css') layer(normalize);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,33 +27,99 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-:root {
-  --speed: calc(var(--duration) * 1s);
-  --accent: hsl(6 90% 50%);
-  --bounce-out: linear(
-    0 0%, 0.5583 3.72%, 0.9549 7.72%,
-    1.0968 9.86%, 1.2039 12.13%,
-    1.2783 14.57%, 1.3213 17.23%,
-    1.3317 18.7%, 1.3345 20.27%,
-    1.3296 21.97%, 1.3171 23.83%,
-    1.2806 27.25%, 1.1551 36.58%,
-    1.096 41.71%, 1.0465 47.53%,
-    1.014 53.68%, 0.997 59.87%,
-    0.9899 67.32%, 1 100%
-  );
-  --easing: linear(
-     0 0%, 0.0027 3.64%, 0.0106 7.29%,
-     0.0425 14.58%, 0.0957 21.87%,
-     0.1701 29.16%, 0.2477 35.19%,
-     0.3401 41.23%, 0.5982 55.18%,
-     0.7044 61.56%, 0.7987 68.28%, 0.875 75%,
-     0.9297 81.25%, 0.9687 87.5%,
-     0.9922 93.75%, 1 100%
-   );
-  accent-color: var(--accent);
-}
+  :root {
+    --speed: calc(var(--duration) * 1s);
+    --accent: hsl(6 90% 50%);
+    --bounce-out: linear(
+      0 0%, 0.5583 3.72%, 0.9549 7.72%,
+      1.0968 9.86%, 1.2039 12.13%,
+      1.2783 14.57%, 1.3213 17.23%,
+      1.3317 18.7%, 1.3345 20.27%,
+      1.3296 21.97%, 1.3171 23.83%,
+      1.2806 27.25%, 1.1551 36.58%,
+      1.096 41.71%, 1.0465 47.53%,
+      1.014 53.68%, 0.997 59.87%,
+      0.9899 67.32%, 1 100%
+    );
+	  --easing: linear(
+			 0 0%, 0.0027 3.64%, 0.0106 7.29%,
+       0.0425 14.58%, 0.0957 21.87%,
+       0.1701 29.16%, 0.2477 35.19%,
+       0.3401 41.23%, 0.5982 55.18%,
+       0.7044 61.56%, 0.7987 68.28%, 0.875 75%,
+       0.9297 81.25%, 0.9687 87.5%,
+       0.9922 93.75%, 1 100%
+     );
+    accent-color: var(--accent);
+  }
+  dialog {
+    --present: 0;
+    scale: calc(var(--scale) + ((1 - var(--scale)) * var(--present)));
+    opacity: var(--present);
+    filter: blur(calc((var(--blur) * (1 - var(--present))) * 1px));
+    translate: 0 calc(calc(var(--translate) * 1lh) * (1 - var(--present)));
+    width: 40ch;
+    min-height: 100px;
+   	box-shadow:
+  		0 0 0 1px rgba(0,0,0,.08),
+  		0px 1px 1px rgba(0,0,0,.02),
+  		0px 4px 8px -4px rgba(0,0,0,.04),
+  		0px 16px 24px -8px rgba(0,0,0,.06);
+  	border-radius: 6px;
+  	color: color-mix(in lch, canvasText, canvas 20%);
+  	border: 1px solid color-mix(in lch, canvas, canvasText 10%);
+  	padding: 1rem;
+  	font-size: 14px;
+  	margin: auto;
+  	display: grid;
+  	gap: 0.5rem;
+    transition:
+     all var(--speed) var(--easing) allow-discrete,
+/*       display var(--speed) var(--easing) allow-discrete,
+      scale var(--speed) var(--easing),
+      opacity var(--speed) var(--easing),
+      filter var(--speed) var(--easing), */
+      translate calc(var(--speed) * calc(1 + var(--present))) var(--move, var(--easing));
+    /**
+    * This is the "magic" piece
+    * transition: display var(--speed) allow-discrete, overlay var(--speed) allow-discrete;
+    * or transition-behavior: allow-discrete;
+    * it acts like a hold animation so you can do whatever you want as long as that's on
+    */
 
-*,
+  }
+  dialog[open] {
+    --present: 1;
+    --move: var(--bounce-out);
+  }
+  @starting-style {
+    dialog[open] {
+      --present: 0;
+    }
+  }
+
+  /* ::backdrop if required */
+  :root:has(#backdrop:checked) {
+    --drop: 1;
+  }
+  dialog::backdrop {
+    --present: 0;
+    background-color: color-mix(in lch, canvas, transparent 80%);
+	  backdrop-filter: blur(4px);
+    opacity: calc(var(--present) * var(--drop, 0));
+    transition: overlay var(--speed) var(--easing) allow-discrete, opacity var(--speed) var(--easing);
+  }
+  dialog[open]::backdrop {
+    --present: 1
+  }
+  @starting-style {
+    dialog[open]::backdrop {
+      --present: 0;
+    }
+  }
+
+
+  *,
   *:after,
   *:before {
     box-sizing: border-box;
@@ -327,3 +394,5 @@ body {
   [data-theme=dark] { --from: 0 0 100% 0; }
   [data-theme=light] { --from: 100% 0 0 0; }
   [data-theme=system] { --from: 0 100% 0 0; }
+
+
