@@ -2,6 +2,7 @@ import { allCommands, directories } from "@constants/termConstants";
 
 ////// TODO:
 // handle passing "cd" with no arguments
+// handle xss vulnerabilities
 
 const handleHelpCommands = (responses, terminalPrompt) => [
   ...responses,
