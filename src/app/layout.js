@@ -1,5 +1,5 @@
 import "./globals.css";
-import { NavBar } from "../components/navBar";
+import { AnchorNavBar } from "../components/anchorNavBar";
 
 export const metadata = {
   title: "Peter says hey",
@@ -10,7 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <NavBar />
         {children}
       </body>
     </html>

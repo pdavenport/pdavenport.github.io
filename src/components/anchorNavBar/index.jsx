@@ -1,11 +1,14 @@
 "use client";
 import { useEffect, useRef, useState, createRef } from "react";
+import { usePathname } from "next/navigation";
 
-export const NavBar = () => {
+export const AnchorNavBar = ({ props }) => {
+  const pathName = usePathname();
   const magneticRef = useRef(null);
   const nav = magneticRef.current;
   const [anchors, setAnchors] = useState([]);
   const [supportsAnchorPos, setSupportsAnchorPos] = useState(false);
+  console.log(pathName);
 
   useEffect(() => {
     setSupportsAnchorPos("anchorName" in document.documentElement.style);
@@ -26,12 +29,6 @@ export const NavBar = () => {
       }
     }
   };
-  /**
-   * If there's no Anchor Positionioning support fill the gap ourselves.
-   * The Oddbird polyfill struggles with dynamic anchoring
-   * We can just set the positions via custom properties when there is a
-   * layout change
-   * */
 
   useEffect(() => {
     const magneticElement = magneticRef.current;
@@ -56,10 +53,6 @@ export const NavBar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anchors]);
 
-  /**
-   * Regardless of whether you have anchor positioning or not, a progressive touch
-   * is to store the previously hovered piece so on pointerleave you get the fade out
-   * */
   const falloff = (index) => () => {
     if (!supportsAnchorPos) {
       nav.style.setProperty("--item-active-x", `var(--item-${index + 1}-x)`);
@@ -105,52 +98,31 @@ export const NavBar = () => {
   return (
     <>
       <nav ref={magneticRef} onPointerLeave={deactivate} onBlur={deactivate}>
-        <ul>
+        <ul className="flex m0 p0 list-none relative flex-wrap touch-none flex-col">
           <li>
             <a href="#home" id="home">
               Home
             </a>
           </li>
           <li>
-            <a href="#links" id="links">
-              Links
+            <a href="#about" id="about">
+              About
             </a>
           </li>
           <li>
-            <a href="#rates" id="rates">
-              Rates
+            <a href="#portfolio" id="portfolio">
+              Portfolio
             </a>
           </li>
           <li>
-            <a href="#speaking" id="speaking">
-              Speaking
-            </a>
-          </li>
-          <li>
-            <a href="#ai" id="ai">
-              AI
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://twitter.com/intent/follow?screen_name=jh3yy"
-              id="follow"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Follow
+            <a href="#contact" id="contact">
+              Contact
             </a>
           </li>
         </ul>
       </nav>
 
       <style jsx>{`
-        *,
-        *:after,
-        *:before {
-          box-sizing: border-box;
-        }
-
         body {
           display: flex;
           place-items: center;
@@ -183,19 +155,8 @@ export const NavBar = () => {
         }
 
         ul {
-          display: flex;
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          position: relative;
-          flex-wrap: wrap;
           color: color-mix(in lch, canvasText 50%, canvas);
           transition: color 0.2s;
-          touch-action: none;
-        }
-
-        li {
-          font-weight: 400;
         }
 
         li a {
@@ -427,73 +388,6 @@ export const NavBar = () => {
         ::view-transition-group(target),
         ::view-transition-group(item) {
           mix-blend-mode: normal;
-        }
-
-        /**
-         * Theming
-         * */
-        .theme {
-          position: fixed;
-          bottom: 1rem;
-          right: 1rem;
-          width: 48px;
-          aspect-ratio: 1;
-          border: 0;
-          border-radius: 6px;
-          cursor: pointer;
-          background: transparent;
-          display: grid;
-          place-items: center;
-        }
-
-        .theme:is(:hover, :focus-visible) {
-          --intent: 1;
-          background: color-mix(in lch, canvasText, canvas 85%);
-        }
-
-        html.dark {
-          color-scheme: dark only;
-        }
-        html.light {
-          color-scheme: light only;
-        }
-
-        .sr-only {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border-width: 0;
-        }
-
-        .theme[aria-pressed="true"] path:first-of-type,
-        .theme[aria-pressed="false"] path:last-of-type {
-          display: block;
-        }
-        .theme[aria-pressed="true"] path:last-of-type,
-        .theme[aria-pressed="false"] path:first-of-type {
-          display: none;
-        }
-
-        button svg {
-          width: 55%;
-        }
-
-        .light::view-transition-new(root) {
-          mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6"><path fill="white" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" /></svg>')
-            center / 0 no-repeat;
-          animation: scale 2s;
-          z-index: 10;
-        }
-        .dark::view-transition-new(root),
-        .light::view-transition-old(root) {
-          animation: none;
-          mix-blend-mode: normal;
-          z-index: -1;
         }
 
         @keyframes scale {
