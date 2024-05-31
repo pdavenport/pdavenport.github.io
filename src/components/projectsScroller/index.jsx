@@ -4,6 +4,10 @@ import { FlickerTest } from "../flickerTest";
 import { MaskedText } from "../maskedText";
 import { Navbar } from "../navBar";
 import { AnchorNavBar } from "../anchorNavBar";
+import Image from "next/image";
+import studymatch from "@public/studymatch.PNG";
+import terminalPreview from "@public/terminalpreview.PNG";
+
 export const ProjectsScroller = () => {
   return (
     <>
@@ -14,9 +18,19 @@ export const ProjectsScroller = () => {
         <div id="bestintravel" />
         <h2 className="text-3xl font-thin text-center mt-10">Best In Travel</h2>
         <h3 className="text-xl font-thin text-center mb-2">-Lonely Planet</h3>
-        <div className="w-[300px] h-[300px] text-center bg-gray-800 mt-5 mx-auto">
-          VIDEO HERE
-        </div>
+
+        <video
+          width="320"
+          height="240"
+          controls
+          preload="none"
+          className="mx-auto"
+          poster="/bestintravelpreview.PNG"
+        >
+          <source src="/bestintravel.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+
         <p className="mt-10 mx-6">
           Best In Travel was a solo project I built for Lonely Planet/Red
           Ventures. This one was extra stressful (fun) due to a complete
@@ -32,9 +46,13 @@ export const ProjectsScroller = () => {
           Terminal Addiction
         </h2>
         <h3 className="text-xl font-thin text-center mb-2">-personal</h3>
-        <div className="w-[300px] h-[300px] text-center bg-gray-800 mt-5 mx-auto">
-          VIDEO HERE
-        </div>
+        <Image
+          alt="terminalPreview"
+          src={terminalPreview}
+          quality={50}
+          className="object-cover z-0 mt-5 mx-auto max-w-80"
+        />
+
         <Link
           href="/projects/terminal"
           className="mt-5 justify-center text-black bg-red-500 max-w-max px-2 mx-auto rounded hover:animate-pulse transition-all hover:border-white border-2 border-black"
@@ -52,9 +70,12 @@ export const ProjectsScroller = () => {
         <div id="studymatch" />
         <h2 className="text-3xl font-thin text-center mt-10">Study Match</h2>
         <h3 className="text-xl font-thin text-center mb-2">-Red Ventures</h3>
-        <div className="w-[300px] h-[300px] text-center bg-gray-800 mt-5 mx-auto">
-          VIDEO HERE
-        </div>
+        <Image
+          alt="studymatch"
+          src={studymatch}
+          quality={50}
+          className="object-cover z-0 mt-5 mx-auto max-w-80"
+        />
         <a
           href="https://college.bestcolleges.com/app/experience/"
           target="_blank"
@@ -151,7 +172,7 @@ export const ProjectsScroller = () => {
         <div id="maskedtext" />
         <h2 className="text-3xl font-thin text-center mt-10">Masked Text</h2>
         <h3 className="text-xl font-thin text-center mb-2">-personal</h3>
-        <div className="flex justify-center flex-col h-[200px] text-center m-auto overflow-hidden">
+        <div className="flex justify-center flex-col max-h-max text-center m-auto overflow-hidden">
           <MaskedText />
         </div>
         <p className=" mt-5 mx-6">
@@ -165,7 +186,7 @@ export const ProjectsScroller = () => {
         <div className="flex justify-center flex-col h-[200px] text-center m-auto overflow-hidden items-center">
           <Navbar />
         </div>
-        <p className=" mt-5 mx-6">
+        <p className="mt-5 mb-10 mx-6">
           A cool effect, but kinda hard to look at. Maybe better suited slowed
           down, or for something that&apos;s not a CTA.
         </p>

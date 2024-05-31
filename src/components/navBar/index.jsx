@@ -1,13 +1,9 @@
 "use client";
 import React from "react";
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { nicky } from "@/app/fonts";
 
 export const Navbar = () => {
-  const path = usePathname();
-  console.log(path);
-
   const links = [{ href: "/", label: "Click Me" }];
 
   const startAnimations = () => {

@@ -37,7 +37,7 @@ export const MaskedText = () => {
           background-clip: text;
           color: transparent;
           text-wrap: balance;
-          font-size: clamp(2rem, 1rem + 4vw, 12rem);
+          font-size: 40px;
           display: inline-block;
         }
 

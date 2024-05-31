@@ -305,9 +305,7 @@ const Page = () => {
         </form>
       </dialog>
       <style jsx>{`
-        /* @import url('https://unpkg.com/normalize.css') layer(normalize); */
-
-        @layer normalize, base, visit;
+        @layer base, visit;
 
         @layer visit {
           :root {

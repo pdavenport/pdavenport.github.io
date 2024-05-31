@@ -1,4 +1,3 @@
-@import url('https://unpkg.com/normalize.css') layer(normalize);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -81,7 +81,6 @@ export const AnchorNavBar = () => {
         ref={navRef}
         onBlur={deactivate}
         onPointerLeave={deactivate}
-        className=""
       >
         <ul className="transition-all md:rounded rounded-lg flex flex-row md:flex-col overflow-x-scroll overflow-y-hidden flex-nowrap whitespace-nowrap w-screen md:w-auto items-center">
           <h2

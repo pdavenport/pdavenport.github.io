@@ -72,8 +72,6 @@ export const TextScroller = ({ children }) => {
         </section>
       </div>
       <style jsx>{`
-        @import url("https://unpkg.com/normalize.css") layer(normalize);
-
         @layer base {
           * {
             box-sizing: border-box;

@@ -69,7 +69,7 @@ const Text = () => (
         background-clip: text;
         color: transparent;
         text-wrap: balance;
-        font-size: clamp(2rem, 1rem + 4vw, 12rem);
+        font-size: clamp(2rem, 1rem + 3vw, 10rem);
         display: inline-block;
       }
 
