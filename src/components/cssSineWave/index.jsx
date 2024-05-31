@@ -3,7 +3,7 @@ const rings = Array.from({ length: 20 }, (_, i) => i + 1);
 export const CssSineWave = () => {
   return (
     <>
-      <div className="rings max-w-[300px] aspect-square relative">
+      <div className="rings max-w-[300px] aspect-square relative m-auto">
         {rings.map((index) => (
           <div key={index} className="ring" style={{ "--index": index }} />
         ))}
@@ -19,29 +19,6 @@ export const CssSineWave = () => {
           place-items: center;
           min-height: 100vh;
           margin: 0;
-        }
-
-        body::before {
-          content: "";
-          height: 100vh;
-          width: 100vw;
-          position: fixed;
-          background: linear-gradient(
-                90deg,
-                color-mix(in lch, canvasText 10%, hsl(0 0% 100% / 0.25)) 1px,
-                transparent 1px 20px
-              )
-              50% 50% / 20px 20px,
-            linear-gradient(
-                color-mix(in lch, canvasText 10%, hsl(0 0% 100% / 0.25)) 1px,
-                transparent 1px 20px
-              )
-              50% 50% / 20px 20px;
-          mask: linear-gradient(-25deg, transparent 65%, white);
-          top: 0;
-          transform-style: flat;
-          pointer-events: none;
-          z-index: -1;
         }
 
         .rings {

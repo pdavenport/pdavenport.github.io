@@ -68,36 +68,9 @@ export const TextScroller = ({ children }) => {
     <div>
       <div className="resizer">
         <section className="scroller" ref={scrollerRef}>
-          <article>
-            <h1>
-              Scroll Masking<span>PRO</span>
-            </h1>
-            <p>
-              As you scroll a container, animate its <code>mask-size</code>{" "}
-              composited with <code>exclude</code>.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Non,
-              earum omnis nihil, atque labore fugit provident minus voluptas a
-              laboriosam amet quidem minima molestias ipsum eos ea dicta quod
-              corrupti.
-            </p>
-            <p>
-              Aliquam dolores ipsum sit cum delectus voluptas, repellat
-              obcaecati deleniti omnis alias sed sapiente debitis repudiandae
-              sunt, autem quisquam. Corporis itaque, beatae dolorem repellendus!
-              Alias nobis ipsum rem odit dicta.
-            </p>
-            <p>
-              Exercitationem voluptatem maxime quas facilis sequi repellendus
-              laudantium, mollitia eaque cum cumque saepe magnam enim explicabo
-              quia autem totam, placeat vitae voluptatibus ipsa accusantium
-              distinctio, quibusdam eos iste molestiae! Quaerat!
-            </p>
-          </article>
+          <article>{children}</article>
         </section>
       </div>
-      {children}
       <style jsx>{`
         @import url("https://unpkg.com/normalize.css") layer(normalize);
 

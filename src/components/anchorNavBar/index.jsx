@@ -1,14 +1,10 @@
 "use client";
-import { useEffect, useRef, useState, createRef } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
-export const AnchorNavBar = ({ props }) => {
-  const pathName = usePathname();
-  const magneticRef = useRef(null);
-  const nav = magneticRef.current;
-  const [anchors, setAnchors] = useState([]);
+export const AnchorNavBar = () => {
+  const navRef = useRef(null);
+
   const [supportsAnchorPos, setSupportsAnchorPos] = useState(false);
-  console.log(pathName);
 
   useEffect(() => {
     setSupportsAnchorPos("anchorName" in document.documentElement.style);
@@ -16,107 +12,129 @@ export const AnchorNavBar = ({ props }) => {
 
   const sync = (nav, anchors) => () => {
     for (let i = 0; i < anchors.length; i++) {
-      const anchor = anchors[i].current;
-      if (anchor) {
-        anchor.style.setProperty("view-transition-name", `item-${i + 1}`);
-        if (!supportsAnchorPos) {
-          const bounds = anchor.getBoundingClientRect();
-          nav.style.setProperty(`--item-${i + 1}-x`, bounds.left);
-          nav.style.setProperty(`--item-${i + 1}-y`, bounds.top);
-          nav.style.setProperty(`--item-${i + 1}-width`, bounds.width);
-          nav.style.setProperty(`--item-${i + 1}-height`, bounds.height);
-        }
-      }
-    }
-  };
-
-  useEffect(() => {
-    const magneticElement = magneticRef.current;
-    if (magneticElement) {
-      const anchorEls = magneticElement.querySelectorAll("a");
-      setAnchors((refs) =>
-        Array.from(anchorEls).map((_, i) => refs[i] || createRef())
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    const nav = magneticRef.current;
-    if (nav) {
-      const calibrate = sync(nav, anchors);
+      anchors[i].style.setProperty("view-transition-name", `item-${i + 1}`);
       if (!supportsAnchorPos) {
-        document.documentElement.dataset.noAnchor = true;
-        calibrate();
-        window.addEventListener("resize", calibrate);
+        const bounds = anchors[i].getBoundingClientRect();
+        nav.style.setProperty(`--item-${i + 1}-x`, bounds.left);
+        nav.style.setProperty(`--item-${i + 1}-y`, bounds.top);
+        nav.style.setProperty(`--item-${i + 1}-width`, bounds.width);
+        nav.style.setProperty(`--item-${i + 1}-height`, bounds.height);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [anchors]);
-
-  const falloff = (index) => () => {
-    if (!supportsAnchorPos) {
-      nav.style.setProperty("--item-active-x", `var(--item-${index + 1}-x)`);
-      nav.style.setProperty("--item-active-y", `var(--item-${index + 1}-y)`);
-      nav.style.setProperty(
-        "--item-active-width",
-        `var(--item-${index + 1}-width)`
-      );
-      nav.style.setProperty(
-        "--item-active-height",
-        `var(--item-${index + 1}-height)`
-      );
-    }
   };
-  for (let i = 0; i < anchors.length; i++) {
-    const anchor = anchors[i].current;
-    if (anchor) {
-      anchor.addEventListener("pointerenter", falloff(i));
-    }
-  }
 
   const deactivate = async () => {
-    if (!supportsAnchorPos) {
+    if (navRef.current && !supportsAnchorPos) {
       const transitions = document.getAnimations();
       if (transitions.length) {
         const fade = transitions.find(
           (t) =>
-            t.effect.target === nav.firstElementChild &&
+            t.effect.target === navRef.current.firstElementChild &&
             t.transitionProperty === "opacity"
         );
         if (fade) {
           await Promise.allSettled([fade.finished]);
         }
-
-        nav.style.removeProperty("--item-active-x");
-        nav.style.removeProperty("--item-active-y");
-        nav.style.removeProperty("--item-active-width");
-        nav.style.removeProperty("--item-active-height");
+        navRef.current.style.removeProperty("--item-active-x");
+        navRef.current.style.removeProperty("--item-active-y");
+        navRef.current.style.removeProperty("--item-active-width");
+        navRef.current.style.removeProperty("--item-active-height");
       }
     }
   };
 
+  const falloff = (index) => () => {
+    if (navRef.current && !supportsAnchorPos) {
+      navRef.current.style.setProperty(
+        "--item-active-x",
+        `var(--item-${index + 1}-x)`
+      );
+      navRef.current.style.setProperty(
+        "--item-active-y",
+        `var(--item-${index + 1}-y)`
+      );
+      navRef.current.style.setProperty(
+        "--item-active-width",
+        `var(--item-${index + 1}-width)`
+      );
+      navRef.current.style.setProperty(
+        "--item-active-height",
+        `var(--item-${index + 1}-height)`
+      );
+    }
+  };
+
+  useEffect(() => {
+    const anchors = navRef.current.querySelectorAll("a");
+    const calibrate = sync(navRef.current, anchors);
+    if (!supportsAnchorPos) {
+      document.documentElement.dataset.noAnchor = true;
+      calibrate();
+      window.addEventListener("resize", calibrate);
+    }
+  }, []);
+
   return (
     <>
-      <nav ref={magneticRef} onPointerLeave={deactivate} onBlur={deactivate}>
-        <ul className="flex m0 p0 list-none relative flex-wrap touch-none flex-col">
-          <li>
-            <a href="#home" id="home">
-              Home
+      <nav
+        data-magnetic={true}
+        ref={navRef}
+        onBlur={deactivate}
+        onPointerLeave={deactivate}
+        className=""
+      >
+        <ul className="transition-all md:rounded rounded-lg flex flex-row md:flex-col overflow-x-scroll overflow-y-hidden flex-nowrap whitespace-nowrap w-screen md:w-auto items-center">
+          <h2
+            className={
+              "text-center my-4 text-white font-thin text-xl pl-4 md:pl-0"
+            }
+          >
+            PROJECTS
+          </h2>
+
+          {/* This could be a map but TODO if I have time */}
+
+          <li className="hover:text-white md:self-start">
+            <a href="#bestintravel" onPointerEnter={falloff(0)}>
+              Best In Travel
             </a>
           </li>
-          <li>
-            <a href="#about" id="about">
-              About
+          <li className="hover:text-white md:self-start">
+            <a href="#terminaladdiction" onPointerEnter={falloff(1)}>
+              Terminal Addiction
             </a>
           </li>
-          <li>
-            <a href="#portfolio" id="portfolio">
-              Portfolio
+          <li className="hover:text-white md:self-start">
+            <a href="#studymatch" onPointerEnter={falloff(2)}>
+              Study Match
             </a>
           </li>
-          <li>
-            <a href="#contact" id="contact">
-              Contact
+          <h2 className={`text-center my-4 text-white font-thin text-xl`}>
+            EXPERIMENTS
+          </h2>
+          <li className="hover:text-white md:self-start">
+            <a href="#csssinewave" onPointerEnter={falloff(3)}>
+              CSS Sine Waves
+            </a>
+          </li>
+          <li className="hover:text-white md:self-start">
+            <a href="#flickereffect" onPointerEnter={falloff(4)}>
+              Flicker Effect
+            </a>
+          </li>
+          <li className="hover:text-white md:self-start">
+            <a href="#snoweffect" onPointerEnter={falloff(5)}>
+              Snow Effect
+            </a>
+          </li>
+          <li className="hover:text-white md:self-start">
+            <a href="#maskedtext" onPointerEnter={falloff(6)}>
+              Masked Text
+            </a>
+          </li>
+          <li className="hover:text-white md:self-start">
+            <a href="#glitcheffect" onPointerEnter={falloff(7)}>
+              Glitch Effect
             </a>
           </li>
         </ul>
@@ -155,8 +173,103 @@ export const AnchorNavBar = ({ props }) => {
         }
 
         ul {
+          list-style: none;
+          position: relative;
           color: color-mix(in lch, canvasText 50%, canvas);
           transition: color 0.2s;
+          touch-action: none;
+        }
+
+        .direction-handler {
+          width: 48px;
+          height: 48px;
+          border: 0;
+          position: fixed;
+          top: 1rem;
+          right: 1rem;
+          padding: 0;
+          background: transparent;
+          display: grid;
+          place-items: center;
+          color: color-mix(in lch, #000, canvas 20%);
+          border-radius: 6px;
+          cursor: pointer;
+        }
+
+        .direction-handler path {
+          transform-box: fill-box;
+          transform-origin: 50% 50%;
+          rotate: calc(270deg * var(--intent));
+          transition: rotate 0.5s;
+          transition-timing-function: linear(
+            0 0%,
+            0.2178 2.1%,
+            1.1144 8.49%,
+            1.2959 10.7%,
+            1.3463 11.81%,
+            1.3705 12.94%,
+            1.3726 13.7%,
+            1.3643 14.48%,
+            1.3151 16.2%,
+            1.0317 21.81%,
+            0.941 24.01%,
+            0.8912 25.91%,
+            0.8694 27.84%,
+            0.8698 29.21%,
+            0.8824 30.71%,
+            1.0122 38.33%,
+            1.0357 40.52%,
+            1.046 42.71%,
+            1.0416 45.7%,
+            0.9961 53.26%,
+            0.9839 57.54%,
+            0.9853 60.71%,
+            1.0012 68.14%,
+            1.0056 72.24%,
+            0.9981 86.66%,
+            1 100%
+          );
+        }
+
+        .direction-handler rect {
+          fill: hsl(40 90% 50%);
+          transition: fill 0.5s;
+        }
+
+        .direction-handler[aria-pressed="true"] path {
+          rotate: calc(270deg - (90deg * var(--intent, 0)));
+        }
+
+        .direction-handler:is(:focus-visible, :hover) {
+          --intent: 1;
+          background: color-mix(in lch, canvasText, canvas 85%);
+        }
+
+        .direction-handler svg {
+          width: 75%;
+        }
+
+        .bear-link {
+          color: canvasText;
+          position: fixed;
+          top: 1rem;
+          left: 1rem;
+          width: 48px;
+          aspect-ratio: 1;
+          display: grid;
+          place-items: center;
+          opacity: 0.8;
+        }
+
+        :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+          opacity: 1;
+        }
+        .bear-link svg {
+          width: 75%;
+        }
+
+        li {
+          font-weight: 400;
         }
 
         li a {
@@ -388,6 +501,73 @@ export const AnchorNavBar = ({ props }) => {
         ::view-transition-group(target),
         ::view-transition-group(item) {
           mix-blend-mode: normal;
+        }
+
+        /**
+         * Theming
+         * */
+        .theme {
+          position: fixed;
+          bottom: 1rem;
+          right: 1rem;
+          width: 48px;
+          aspect-ratio: 1;
+          border: 0;
+          border-radius: 6px;
+          cursor: pointer;
+          background: transparent;
+          display: grid;
+          place-items: center;
+        }
+
+        .theme:is(:hover, :focus-visible) {
+          --intent: 1;
+          background: color-mix(in lch, canvasText, canvas 85%);
+        }
+
+        html.dark {
+          color-scheme: dark only;
+        }
+        html.light {
+          color-scheme: light only;
+        }
+
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border-width: 0;
+        }
+
+        .theme[aria-pressed="true"] path:first-of-type,
+        .theme[aria-pressed="false"] path:last-of-type {
+          display: block;
+        }
+        .theme[aria-pressed="true"] path:last-of-type,
+        .theme[aria-pressed="false"] path:first-of-type {
+          display: none;
+        }
+
+        button svg {
+          width: 55%;
+        }
+
+        .light::view-transition-new(root) {
+          mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6"><path fill="white" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" /></svg>')
+            center / 0 no-repeat;
+          animation: scale 2s;
+          z-index: 10;
+        }
+        .dark::view-transition-new(root),
+        .light::view-transition-old(root) {
+          animation: none;
+          mix-blend-mode: normal;
+          z-index: -1;
         }
 
         @keyframes scale {
