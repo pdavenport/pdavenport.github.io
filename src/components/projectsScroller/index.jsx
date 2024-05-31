@@ -5,8 +5,6 @@ import { MaskedText } from "../maskedText";
 import { Navbar } from "../navBar";
 import { AnchorNavBar } from "../anchorNavBar";
 import Image from "next/image";
-import studymatch from "@public/studymatch.PNG";
-import terminalPreview from "@public/terminalpreview.PNG";
 
 export const ProjectsScroller = () => {
   return (
@@ -48,7 +46,7 @@ export const ProjectsScroller = () => {
         <h3 className="text-xl font-thin text-center mb-2">-personal</h3>
         <Image
           alt="terminalPreview"
-          src={terminalPreview}
+          src={"/terminalpreview.PNG"}
           quality={50}
           className="object-cover z-0 mt-5 mx-auto max-w-80"
         />
@@ -72,7 +70,7 @@ export const ProjectsScroller = () => {
         <h3 className="text-xl font-thin text-center mb-2">-Red Ventures</h3>
         <Image
           alt="studymatch"
-          src={studymatch}
+          src={"/studymatch.PNG"}
           quality={50}
           className="object-cover z-0 mt-5 mx-auto max-w-80"
         />
