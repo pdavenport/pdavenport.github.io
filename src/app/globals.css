@@ -75,17 +75,7 @@ body {
   	gap: 0.5rem;
     transition:
      all var(--speed) var(--easing) allow-discrete,
-/*       display var(--speed) var(--easing) allow-discrete,
-      scale var(--speed) var(--easing),
-      opacity var(--speed) var(--easing),
-      filter var(--speed) var(--easing), */
       translate calc(var(--speed) * calc(1 + var(--present))) var(--move, var(--easing));
-    /**
-    * This is the "magic" piece
-    * transition: display var(--speed) allow-discrete, overlay var(--speed) allow-discrete;
-    * or transition-behavior: allow-discrete;
-    * it acts like a hold animation so you can do whatever you want as long as that's on
-    */
 
   }
   dialog[open] {
@@ -171,12 +161,6 @@ body {
     z-index: -1;
   }
 
-  h1 {
-    font-size: clamp(2rem, 2vw + 1rem, 8rem);
-    font-weight: 600;
-    color: color-mix(canvasText, canvas 15%);
-  }
-
   .sr-only {
     position: absolute;
     width: 1px;
@@ -187,25 +171,6 @@ body {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
-  }
-
-  .bear-link {
-    color: canvasText;
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    width: 48px;
-    aspect-ratio: 1;
-    display: grid;
-    place-items: center;
-    opacity: 0.8;
-  }
-
-  :where(.x-link, .bear-link):is(:hover, :focus-visible) {
-    opacity: 1;
-  }
-  .bear-link svg {
-    width: 75%;
   }
 
   .open {

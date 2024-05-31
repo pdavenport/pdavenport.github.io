@@ -1,92 +1,106 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { handleInput } from "@utils/handleInput";
-import Clock from "@utils/currentTime";
+import { nicky } from "./fonts";
+import Image from "next/image";
+import nightJapan3 from "../../public/nightJapan3.jpg";
+import { AnchorNavBar } from "@/components/anchorNavBar";
 
-// peter  pdavenport.github.io  ➜ ( main)   18.18.1  ♥ 19:42 
-
-export default function TestPage() {
-  const [responses, setResponses] = useState(Array(29).fill(""));
-  const [currentPage, setCurrentPage] = useState("~");
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000);
-
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
-
-  const formatTime = (time) => {
-    let hours = time.getHours();
-    let minutes = time.getMinutes();
-    return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-  };
-
-  const textareaRef = useRef(null);
-  const inputRef = useRef(null);
-  const terminalPrompt = ()=>`(pdavenport.github.io > ➜ (main) > ♥ ${formatTime(currentTime)} >`;
-
-  // handles input from user
-  const handleCommand = (event) => {
-    if (event.key === "Enter") {
-      const command = event.target.value;
-      const currentTerminalPrompt = terminalPrompt();
-      setResponses(handleInput(command, currentPage, responses, currentTerminalPrompt));
-      event.target.value = "";
-    }
-  };
-
-  // handles click on textarea
-  const handleTextareaClick = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
-
-  // handles scrolling to bottom of textarea
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.scrollTop =
-        textareaRef.current.scrollHeight - textareaRef.current.clientHeight;
-    }
-  }, []);
-
-  // handles scrolling to bottom of textarea when responses are added
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.scrollTop =
-        textareaRef.current.scrollHeight - textareaRef.current.clientHeight;
-    }
-  }, [responses]);
-
+export default function HomePage() {
   return (
-    <div
-      style={{ height: "calc(100% - 88px)", width: "calc(100% - 88px)" }}
-      className="flex flex-col h-screen text-green-500 border border-green-500 m-10 p-6 absolute w-screen"
-    >
-      <textarea
-        ref={textareaRef}
-        value={responses.join("\n")}
-        readOnly
-        className="bg-black text-green-500 border-none font-mono text-lg w-full overflow-hidden h-full outline-none"
-        style={{ resize: "none" }}
-        onClick={handleTextareaClick}
+    <>
+      <Image
+        alt="City"
+        src={nightJapan3}
+        placeholder="blur"
+        quality={100}
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+        }}
       />
-      <div className="relative flex gap-1">
-        <p className="shrink-0 self-center mb-1">{`(pdavenport.github.io > ➜ (main) > ♥ ${Clock()} >`}</p>
-        <input
-          ref={inputRef}
-          type="text"
-          placeholder=""
-          className="bg-black text-green-500 border-none font-mono text-lg py-1 w-full outline-none"
-          onKeyDown={handleCommand}
-        />
+      <div className="absolute">
+        <h1
+          className={`${nicky.className} lg:text-8xl md:text-5xl text-3xl p-2 headline`}
+        >
+          Hello, Welcome
+        </h1>
       </div>
-    </div>
+      <div className="relative">
+        <h2
+          className={`${nicky.className} lg:text-8xl md:text-5xl text-3xl p-2 headline flipped opacity-50 lg:mt-[600px] md:mt-[400px] mt-[350px]`}
+        >
+          Hello, Welcome
+        </h2>
+      </div>
+      <style jsx>{`
+        .flipped {
+          transform: scale(1, -1);
+        }
+        .headline {
+          background: conic-gradient(
+              from var(--angle, 180deg) at 50% 70%,
+              hsla(0, 0%, 98%, 1) 0deg,
+              #eec32d 72.0000010728836deg,
+              #ec4b4b 144.0000021457672deg,
+              #709ab9 216.00000858306885deg,
+              #4dffbf 288.0000042915344deg,
+              hsla(0, 0%, 98%, 1) 1turn
+            ),
+            linear-gradient(
+              var(--secondary) 0 calc(var(--spread, 4) * 1lh),
+              transparent
+            );
+          background-size: 100% calc(var(--highlight) * 1lh),
+            100% calc(100% - (var(--highlight) * 1lh));
+          background-position: 0 0, 0 calc(var(--highlight) * 1lh);
+          background-clip: text;
+          color: transparent;
+          text-wrap: balance;
+          display: inline-block;
+          text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
+            0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00,
+            0 0 98px #ff0000;
+          color: transparent;
+          -webkit-text-stroke-width: 6px;
+          -webkit-text-stroke-color: #2b2b2b;
+
+          &:before {
+            content: "Hello, Welcome";
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: transparentize(#2b2c2d, 0.9);
+            text-shadow: 0px 0px 60px transparentize(lighten(red, 10%), 0.3);
+            -webkit-text-stroke-width: 6px;
+            -webkit-text-stroke-color: red;
+          }
+          &:after {
+            content: "Hello, Welcome";
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: transparent;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: rgba(255, 255, 255, 0.8);
+          }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+          @property --angle {
+            inherits: true;
+            initial-value: 180deg;
+            syntax: "<angle>";
+          }
+          @keyframes rotate {
+            to {
+              --angle: 540deg;
+            }
+          }
+          [data-gradient="true"][data-animate="true"] {
+            animation: rotate 6s infinite linear;
+          }
+        }
+      `}</style>
+    </>
   );
 }
-// peter  pdavenport.github.io  ➜ ( main)   18.18.1  ♥ 19:42 
