@@ -1,9 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { nicky } from "@/app/fonts";
-import { palmore } from "@/app/fonts";
 
 const homeGlow = `conic-gradient(
 from 90deg at 50% 50%, 
