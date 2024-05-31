@@ -46,7 +46,7 @@ export const ProjectsScroller = () => {
         <h3 className="text-xl font-thin text-center mb-2">-personal</h3>
         <Image
           alt="terminalPreview"
-          src={"/terminalpreview.PNG"}
+          src={"/terminalPreview.PNG"}
           quality={50}
           className="object-cover z-0 mt-5 mx-auto max-w-80"
         />
