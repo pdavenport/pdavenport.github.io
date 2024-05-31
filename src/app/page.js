@@ -2,7 +2,6 @@
 import { nicky } from "./fonts";
 import Image from "next/image";
 import nightJapan3 from "../../public/nightJapan3.jpg";
-import { AnchorNavBar } from "@/components/anchorNavBar";
 
 export default function HomePage() {
   return (

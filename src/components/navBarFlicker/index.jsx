@@ -20,7 +20,7 @@ export const NavBarFlicker = () => {
     <>
       <nav className="absolute top-0 z-30 mt-5 bg-black bg-opacity-70 rounded-md left-0 right-0">
         <ul className="list-none w-full flex gap-10 flex-wrap justify-center">
-          {links.map((link, i) => (
+          {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}

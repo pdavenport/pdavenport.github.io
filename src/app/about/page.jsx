@@ -95,7 +95,6 @@ const Text = () => (
 export default function About() {
   return (
     <>
-      {/* <MaskedText /> */}
       <div className="absolute z-20">
         <TextScroller>
           <Text />

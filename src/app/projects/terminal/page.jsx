@@ -5,6 +5,7 @@ import Clock from "@utils/currentTime";
 
 export default function TestPage() {
   const [responses, setResponses] = useState(Array(29).fill(""));
+  // eslint-disable-next-line no-unused-vars
   const [currentPage, setCurrentPage] = useState("~");
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -21,19 +22,22 @@ export default function TestPage() {
   const formatTime = (time) => {
     let hours = time.getHours();
     let minutes = time.getMinutes();
-    return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    return `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
   };
 
   const textareaRef = useRef(null);
   const inputRef = useRef(null);
-  const terminalPrompt = ()=>`(pdavenport.github.io > ➜ (main) > ♥ ${formatTime(currentTime)} >`;
+  const terminalPrompt = () =>
+    `(pdavenport.github.io > ➜ (main) > ♥ ${formatTime(currentTime)} >`;
 
   // handles input from user
   const handleCommand = (event) => {
     if (event.key === "Enter") {
       const command = event.target.value;
       const currentTerminalPrompt = terminalPrompt();
-      setResponses(handleInput(command, currentPage, responses, currentTerminalPrompt));
+      setResponses(
+        handleInput(command, currentPage, responses, currentTerminalPrompt)
+      );
       event.target.value = "";
     }
   };

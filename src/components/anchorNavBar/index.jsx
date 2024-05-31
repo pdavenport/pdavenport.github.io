@@ -72,6 +72,7 @@ export const AnchorNavBar = () => {
       calibrate();
       window.addEventListener("resize", calibrate);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

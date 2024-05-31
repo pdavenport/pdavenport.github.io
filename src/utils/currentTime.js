@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -16,10 +16,10 @@ function Clock() {
   const formatTime = (time) => {
     let hours = time.getHours();
     let minutes = time.getMinutes();
-    return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    return `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
   };
 
-  return formatTime(currentTime)
+  return formatTime(currentTime);
 }
 
 export default Clock;
