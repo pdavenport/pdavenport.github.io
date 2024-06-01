@@ -50,7 +50,7 @@ export default function About() {
       >
         <h1
           ref={headlineElement}
-          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px]`}
+          className={` font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px]`}
         >
           I&apos;m glad you&apos;re here.
         </h1>
