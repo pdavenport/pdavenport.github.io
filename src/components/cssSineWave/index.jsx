@@ -1,4 +1,4 @@
-const rings = Array.from({ length: 20 }, (_, i) => i + 1);
+const rings = Array.from({ length: 10 }, (_, i) => i + 1);
 
 export const CssSineWave = () => {
   return (
@@ -26,6 +26,14 @@ export const CssSineWave = () => {
           transform: translate3d(0, 0, 100vmin) rotateX(-32deg) rotateY(-32deg)
             rotateX(90deg);
         }
+
+        // @media (max-width: 500px) {
+        //   .rings {
+        //     width: 20vmin;
+        //     transform: translate3d(0, 0, 100vmin) rotateX(-32deg)
+        //       rotateY(-32deg) rotateX(90deg);
+        //   }
+        // }
 
         .ring {
           --count: 20;
