@@ -51,7 +51,7 @@ export const TextScroller = ({ children }) => {
   }, [createScrollTrigger]);
 
   return (
-    <div className="md:hidden block">
+    <div className="md:block hidden">
       <div className="resizer">
         <section className="scroller" ref={scrollerRef}>
           <article>{children}</article>
@@ -98,8 +98,6 @@ export const TextScroller = ({ children }) => {
 
         @layer mask {
           .scroller {
-            --scroll-progress-top: 0;
-            --scroll-progress-bottom: 0;
             --mask-size: 180;
             --mask-width: 100%;
             mask: linear-gradient(#000, #0000) 0 0 / var(--mask-width)

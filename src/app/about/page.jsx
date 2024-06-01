@@ -50,7 +50,12 @@ export default function About() {
       >
         <h1
           ref={headlineElement}
-          className={` font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px]`}
+          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] hidden md:inline-block md:max-w-full`}
+        >
+          I&apos;m glad you&apos;re here.
+        </h1>
+        <h1
+          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] inline-block md:hidden`}
         >
           I&apos;m glad you&apos;re here.
         </h1>
@@ -101,7 +106,6 @@ export default function About() {
           background-clip: text;
           color: transparent;
           text-wrap: balance;
-          display: inline-block;
         }
       `}</style>
     </>
@@ -109,10 +113,10 @@ export default function About() {
 
   return (
     <>
-      <div className="absolute z-20 hidden md:block">
+      <div className="absolute z-20 hidden md:flex">
         <TextScroller>{text}</TextScroller>
       </div>
-      <div className="absolute z-20 md:hidden block w-80 h-[500px] textcontainer rounded-[12px] max-h-96 overflow-y-scroll p-6">
+      <div className="absolute z-20 md:hidden flex w-80 h-[500px] textcontainer rounded-[12px] max-h-96 overflow-y-scroll p-6 none">
         {text}
       </div>
       <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
@@ -123,7 +127,6 @@ export default function About() {
           background: color-mix(in lch, #000000, #ffffff 2%);
           scrollbar-width: thin;
           scrollbar-color: var(--accent) transparent;
-          display: flex;
           gap: 1rem;
           flex-direction: column;
         }
