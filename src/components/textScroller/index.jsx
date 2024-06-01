@@ -1,63 +1,45 @@
 "use client";
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-// const CONFIG = {
-//   size: 120,
-//   trigger: false,
-//   bar: true,
-//   range: 120,
-//   light: false,
-// };
-
 export const TextScroller = ({ children }) => {
   const scrollerRef = useRef(null);
+  const createScrollTrigger = useCallback((start, end, property) => {
+    const trigger = ScrollTrigger.create({
+      scroller: scrollerRef.current,
+      trigger: "article",
+      scrub: true,
+      ease: "none",
+      start,
+      end,
+      onUpdate: (self) => {
+        scrollerRef.current.style.setProperty(property, self.progress * 100);
+      },
+    });
+    return trigger;
+  }, []);
 
   useEffect(() => {
-    const update = () => {
-      ScrollTrigger.refresh();
-      document.documentElement.dataset.light = false;
-      document.documentElement.dataset.trigger = false;
-      document.documentElement.dataset.maskBar = true;
-      document.documentElement.style.setProperty("--mask-size", 180);
-      document.documentElement.style.setProperty("--mask-range", 120);
-    };
-    update();
-
+    ScrollTrigger.refresh();
     let triggers = [];
     let obs;
-    const scroller = scrollerRef.current;
-
-    const createScrollTrigger = (start, end, property) => {
-      const trigger = ScrollTrigger.create({
-        scroller,
-        trigger: "article",
-        scrub: true,
-        ease: "none",
-        start,
-        end,
-        onUpdate: (self) => {
-          scroller.style.setProperty(property, self.progress * 100);
-        },
-      });
-      triggers.push(trigger);
-    };
 
     if (!CSS.supports("animation-timeline: scroll()")) {
       gsap.registerPlugin(ScrollTrigger);
-      const scroller = scrollerRef.current;
 
-      createScrollTrigger(0, () => 120, "--scroll-progress-top");
-      createScrollTrigger(
-        () => ScrollTrigger.maxScroll(scroller) - 120 * 1,
-        () => ScrollTrigger.maxScroll(scroller),
-        "--scroll-progress-bottom"
+      triggers.push(createScrollTrigger(0, () => 120, "--scroll-progress-top"));
+      triggers.push(
+        createScrollTrigger(
+          () => ScrollTrigger.maxScroll(scrollerRef.current) - 120 * 1,
+          () => ScrollTrigger.maxScroll(scrollerRef.current),
+          "--scroll-progress-bottom"
+        )
       );
 
       obs = new ResizeObserver(ScrollTrigger.refresh);
-      obs.observe(scroller);
+      obs.observe(scrollerRef.current);
     }
 
     return () => {
@@ -66,7 +48,7 @@ export const TextScroller = ({ children }) => {
         obs.disconnect();
       }
     };
-  }, []);
+  }, [createScrollTrigger]);
 
   return (
     <div>
@@ -116,6 +98,9 @@ export const TextScroller = ({ children }) => {
 
         @layer mask {
           .scroller {
+            --scroll-progress-top: 0;
+            --scroll-progress-bottom: 0;
+            --mask-size: 180;
             --mask-width: 100%;
             mask: linear-gradient(#000, #0000) 0 0 / var(--mask-width)
                 calc(

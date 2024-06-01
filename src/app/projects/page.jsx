@@ -83,7 +83,7 @@ export default function ProjectsPage() {
         src={snowjapan1}
         placeholder="blur"
         quality={100}
-        className="object-cover w-full h-full z-0"
+        className="object-cover w-full h-full absolute z-0"
       />
       <div
         ref={canvasRef}
