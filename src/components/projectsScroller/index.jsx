@@ -180,9 +180,9 @@ export const ProjectsScroller = () => {
         <p className=" mt-5 mx-6">
           This is a concical gradient background rotating behind some clip
           masked text. This originally was from @Jhey but animating css
-          variables in gradients isn't well supported on firefox. To support
-          this effect on firefox I used JS to increment the angle variable and
-          then update it via "requestAnimationFrame".
+          variables in gradients isn&apos;t well supported on firefox. To
+          support this effect on firefox I used JS to increment the angle
+          variable and then update it via &quot;requestAnimationFrame&quot;.
         </p>
 
         <div id="glitcheffect" />
