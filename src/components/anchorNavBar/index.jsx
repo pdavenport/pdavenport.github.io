@@ -153,7 +153,7 @@ export const AnchorNavBar = () => {
         }
 
         body::before {
-          --line: color-mix(in lch, canvasText 25%, transparent);
+          --line: color-mix(in lch, #ffffff 25%, transparent);
           --size: 40px;
           content: "";
           height: 100vh;
@@ -175,7 +175,7 @@ export const AnchorNavBar = () => {
         ul {
           list-style: none;
           position: relative;
-          color: color-mix(in lch, canvasText 50%, canvas);
+          color: color-mix(in lch, #ffffff 50%, #000000);
           transition: color 0.2s;
           touch-action: none;
         }
@@ -191,7 +191,7 @@ export const AnchorNavBar = () => {
           background: transparent;
           display: grid;
           place-items: center;
-          color: color-mix(in lch, #000, canvas 20%);
+          color: color-mix(in lch, #000, #000000 20%);
           border-radius: 6px;
           cursor: pointer;
         }
@@ -242,7 +242,7 @@ export const AnchorNavBar = () => {
 
         .direction-handler:is(:focus-visible, :hover) {
           --intent: 1;
-          background: color-mix(in lch, canvasText, canvas 85%);
+          background: color-mix(in lch, #ffffff, #000000 85%);
         }
 
         .direction-handler svg {
@@ -250,7 +250,7 @@ export const AnchorNavBar = () => {
         }
 
         .bear-link {
-          color: canvasText;
+          color: #ffffff;
           position: fixed;
           top: 1rem;
           left: 1rem;
@@ -280,12 +280,12 @@ export const AnchorNavBar = () => {
         }
 
         :is(a, button) {
-          outline-color: color-mix(in lch, canvasText, transparent 50%);
+          outline-color: color-mix(in lch, #ffffff, transparent 50%);
         }
 
         a:is(:focus-visible, :hover),
         ul:has(a:target:is(:focus-visible, :hover))::after {
-          color: canvasText;
+          color: #ffffff;
         }
 
         [data-no-anchor]
@@ -385,7 +385,7 @@ export const AnchorNavBar = () => {
           opacity: var(--intent, 0);
           z-index: -1;
           border-radius: 6px;
-          background: color-mix(in lch, canvasText, canvas 85%);
+          background: color-mix(in lch, #ffffff, #000000 85%);
           transition: all var(--transition), top var(--transition),
             left var(--transition), height var(--transition),
             opacity var(--transition), color var(--transition),
@@ -522,7 +522,7 @@ export const AnchorNavBar = () => {
 
         .theme:is(:hover, :focus-visible) {
           --intent: 1;
-          background: color-mix(in lch, canvasText, canvas 85%);
+          background: color-mix(in lch, #ffffff, #000000 85%);
         }
 
         html.dark {

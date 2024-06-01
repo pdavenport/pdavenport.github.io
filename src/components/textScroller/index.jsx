@@ -60,7 +60,7 @@ export const TextScroller = ({ children }) => {
       <style jsx>{`
         @layer scroller {
           .resizer {
-            --bg: color-mix(in lch, canvas, canvasText 2%);
+            --bg: color-mix(in lch, #000000, #ffffff 2%);
             width: 36ch;
             aspect-ratio: 3 / 4;
             resize: both;
@@ -71,8 +71,8 @@ export const TextScroller = ({ children }) => {
             max-width: calc(100vw - 4rem);
             background: linear-gradient(var(--bg), var(--bg)) padding-box,
               linear-gradient(
-                  color-mix(in lch, canvasText, transparent 70%),
-                  color-mix(in lch, canvasText, transparent 90%)
+                  color-mix(in lch, #ffffff, transparent 70%),
+                  color-mix(in lch, #ffffff, transparent 90%)
                 )
                 border-box;
             border-radius: 12px;

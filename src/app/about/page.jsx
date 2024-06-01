@@ -32,52 +32,45 @@ export default function About() {
     };
   }, []);
 
-  return (
+  const text = (
     <>
-      <div className="absolute z-20">
-        <TextScroller>
-          <div
-            className="relative"
-            data-gradient={true}
-            data-animate={true}
-            style={{
-              "--highlight": 4,
-              "--spread": 4,
-              "--primary": "#ffffff",
-              "--secondary": "#606060",
-            }}
-          >
-            <h1
-              ref={headlineElement}
-              className={`${nicky.className} font-thin leading-none bg-no-repeat headline`}
-            >
-              I&apos;m glad you&apos;re here.
-            </h1>
-          </div>
-          <p>My name is Peter, I&apos;m a senior full-stack dev at IBM.</p>
-          <p className={nicky.className}>
-            I enjoy being in the sun, a warm espresso early in the morning, and
-            a nice cigar.
-          </p>
-          <p>
-            Life has the most meaning when you&apos;re growing. Don&apos;t stop
-            listening, failing, sloughing comfort, or learning. When you rest,
-            you rust.
-          </p>
-          <p>
-            If you&apos;re a dev, designer, CTO, or even if you&apos;ve never
-            coded, feel free to reach out and ask anything you&apos;d like, I
-            love meeting new people.
-          </p>
-          <p>See you in the mountains.</p>
-          <h2 className={`text-right ${nicky.className} text-3xl italic`}>
-            - Peter
-          </h2>
-        </TextScroller>
+      <div
+        className="relative"
+        data-gradient={true}
+        data-animate={true}
+        style={{
+          "--highlight": 4,
+          "--spread": 4,
+          "--primary": "#ffffff",
+          "--secondary": "#606060",
+        }}
+      >
+        <h1
+          ref={headlineElement}
+          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px]`}
+        >
+          I&apos;m glad you&apos;re here.
+        </h1>
       </div>
-      <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
-        <CssSineWave />
-      </div>
+      <p>My name is Peter, I&apos;m a senior full-stack dev at IBM.</p>
+      <p className={nicky.className}>
+        I enjoy being in the sun, a warm espresso early in the morning, and a
+        nice cigar.
+      </p>
+      <p>
+        Life has the most meaning when you&apos;re growing. Don&apos;t stop
+        listening, failing, sloughing comfort, or learning. When you rest, you
+        rust.
+      </p>
+      <p>
+        If you&apos;re a dev, designer, CTO, or even if you&apos;ve never coded,
+        feel free to reach out and ask anything you&apos;d like, I love meeting
+        new people.
+      </p>
+      <p>See you in the mountains.</p>
+      <h2 className={`text-right ${nicky.className} text-3xl italic`}>
+        - Peter
+      </h2>
       <style jsx>{`
         .headline {
           background: conic-gradient(
@@ -105,8 +98,31 @@ export default function About() {
           background-clip: text;
           color: transparent;
           text-wrap: balance;
-          font-size: clamp(2rem, 1rem + 3vw, 10rem);
           display: inline-block;
+        }
+      `}</style>
+    </>
+  );
+
+  return (
+    <>
+      <div className="absolute z-20 hidden md:block">
+        <TextScroller>{text}</TextScroller>
+      </div>
+      <div className="absolute z-20 md:hidden block w-80 h-[500px] textcontainer rounded-[12px] max-h-96 overflow-y-scroll p-6">
+        {text}
+      </div>
+      <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
+        <CssSineWave />
+      </div>
+      <style jsx>{`
+        .textcontainer {
+          background: color-mix(in lch, #000000, #ffffff 2%);
+          scrollbar-width: thin;
+          scrollbar-color: var(--accent) transparent;
+          display: flex;
+          gap: 1rem;
+          flex-direction: column;
         }
       `}</style>
     </>

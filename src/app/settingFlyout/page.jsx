@@ -366,8 +366,8 @@ const Page = () => {
               0px 4px 8px -4px rgba(0, 0, 0, 0.04),
               0px 16px 24px -8px rgba(0, 0, 0, 0.06);
             border-radius: 6px;
-            color: color-mix(in lch, canvasText, canvas 20%);
-            border: 1px solid color-mix(in lch, canvas, canvasText 10%);
+            color: color-mix(in lch, #ffffff, #000000 20%);
+            border: 1px solid color-mix(in lch, #000000, #ffffff 10%);
             padding: 1rem;
             font-size: 14px;
             margin: auto;
@@ -403,7 +403,7 @@ const Page = () => {
           }
           dialog::backdrop {
             --present: 0;
-            background-color: color-mix(in lch, canvas, transparent 80%);
+            background-color: color-mix(in lch, #000000, transparent 80%);
             backdrop-filter: blur(4px);
             opacity: calc(var(--present) * var(--drop, 0));
             transition: overlay var(--speed) var(--easing) allow-discrete,
@@ -435,7 +435,7 @@ const Page = () => {
             min-height: 100vh;
             font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons",
               "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
-            color: canvasText;
+            color: #ffffff;
           }
           html,
           [data-theme="light"] {
@@ -452,7 +452,7 @@ const Page = () => {
           }
 
           body::before {
-            --line: color-mix(in lch, canvasText 25%, transparent);
+            --line: color-mix(in lch, #ffffff 25%, transparent);
             --size: 40px;
             content: "";
             height: 100vh;
@@ -474,7 +474,7 @@ const Page = () => {
           h1 {
             font-size: clamp(2rem, 2vw + 1rem, 8rem);
             font-weight: 600;
-            color: color-mix(canvasText, canvas 15%);
+            color: color-mix(#ffffff, #000000 15%);
           }
 
           .sr-only {
@@ -490,7 +490,7 @@ const Page = () => {
           }
 
           .bear-link {
-            color: canvasText;
+            color: #ffffff;
             position: fixed;
             top: 1rem;
             left: 1rem;
@@ -517,12 +517,12 @@ const Page = () => {
             border-radius: 6px;
             border: 0;
             background: transparent;
-            color: color-mix(in lch, canvasText, canvas 25%);
+            color: color-mix(in lch, #ffffff, #000000 25%);
             cursor: pointer;
             background: color-mix(
               in lch,
-              canvas,
-              canvasText calc(var(--intent, 0) * 15%)
+              #000000,
+              #ffffff calc(var(--intent, 0) * 15%)
             );
           }
 
@@ -596,11 +596,11 @@ const Page = () => {
           }
 
           :is(a, label) {
-            color: color-mix(in lch, canvasText, transparent 50%);
+            color: color-mix(in lch, #ffffff, transparent 50%);
           }
           a:is(:hover, :focus-visible) {
             --intent: 1;
-            color: canvasText;
+            color: #ffffff;
           }
 
           header a svg {
@@ -638,10 +638,10 @@ const Page = () => {
           footer button:last-of-type {
             background: color-mix(
               in lch,
-              canvasText,
-              canvas calc(var(--intent, 0) * 30%)
+              #ffffff,
+              #000000 calc(var(--intent, 0) * 30%)
             );
-            color: canvas;
+            color: #000000;
           }
 
           form {
