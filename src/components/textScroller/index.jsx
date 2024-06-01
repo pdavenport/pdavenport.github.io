@@ -51,7 +51,7 @@ export const TextScroller = ({ children }) => {
   }, [createScrollTrigger]);
 
   return (
-    <div>
+    <div className="md:hidden block">
       <div className="resizer">
         <section className="scroller" ref={scrollerRef}>
           <article>{children}</article>

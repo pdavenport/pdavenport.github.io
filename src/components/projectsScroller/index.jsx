@@ -6,6 +6,9 @@ import { Navbar } from "../navBar";
 import { AnchorNavBar } from "../anchorNavBar";
 import Image from "next/image";
 
+// TODO: make descriptions more technical
+// TODO: add stop snow button
+
 export const ProjectsScroller = () => {
   return (
     <>

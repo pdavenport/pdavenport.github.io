@@ -4,6 +4,9 @@ import { TextScroller } from "@/components/textScroller";
 import { nicky } from "../fonts";
 import { useRef, useEffect } from "react";
 
+// TODO: see about optimizing css rings
+// TODO: rotating bg isn't handled well on mobile, remove?
+
 export default function About() {
   const headlineElement = useRef(null);
 

@@ -6,6 +6,8 @@ export const metadata = {
   description: "I'm grateful you're here",
 };
 
+// TODO: add settings flyout button
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -16,9 +18,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-// temp:
-// <meta http-equiv="Content-Security-Policy" content="default-src 'self'; worker-src 'self' blob:; report-uri https://your-report-uri"></meta>
-{/* <Head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; worker-src 'self' blob:; report-uri https://your-report-uri" />
-      </Head> */}

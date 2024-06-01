@@ -27,6 +27,9 @@ const email = [
   "m",
   "e",
 ].join("");
+
+// todo: make a coherent style
+
 const ContactPage = () => {
   return (
     <>
