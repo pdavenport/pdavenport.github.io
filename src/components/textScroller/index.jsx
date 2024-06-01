@@ -4,6 +4,14 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+// const CONFIG = {
+//   size: 120,
+//   trigger: false,
+//   bar: true,
+//   range: 120,
+//   light: false,
+// };
+
 export const TextScroller = ({ children }) => {
   const scrollerRef = useRef(null);
 
@@ -20,6 +28,7 @@ export const TextScroller = ({ children }) => {
 
     let triggers = [];
     let obs;
+    const scroller = scrollerRef.current;
 
     const createScrollTrigger = (start, end, property) => {
       const trigger = ScrollTrigger.create({
@@ -30,12 +39,7 @@ export const TextScroller = ({ children }) => {
         start,
         end,
         onUpdate: (self) => {
-          scroller.style.setProperty(
-            property,
-            CONFIG.trigger
-              ? Math.round(self.progress) * 100
-              : self.progress * 100
-          );
+          scroller.style.setProperty(property, self.progress * 100);
         },
       });
       triggers.push(trigger);
@@ -45,9 +49,9 @@ export const TextScroller = ({ children }) => {
       gsap.registerPlugin(ScrollTrigger);
       const scroller = scrollerRef.current;
 
-      createScrollTrigger(0, () => CONFIG.range, "--scroll-progress-top");
+      createScrollTrigger(0, () => 120, "--scroll-progress-top");
       createScrollTrigger(
-        () => ScrollTrigger.maxScroll(scroller) - CONFIG.range * 1,
+        () => ScrollTrigger.maxScroll(scroller) - 120 * 1,
         () => ScrollTrigger.maxScroll(scroller),
         "--scroll-progress-bottom"
       );
@@ -72,85 +76,6 @@ export const TextScroller = ({ children }) => {
         </section>
       </div>
       <style jsx>{`
-        @layer base {
-          * {
-            box-sizing: border-box;
-          }
-
-          :root {
-            color-scheme: light only;
-            --accent: hsl(10 90% 50%);
-          }
-
-          [data-light="false"] {
-            color-scheme: dark only;
-          }
-
-          body {
-            display: grid;
-            place-items: center;
-            min-height: 100vh;
-            accent-color: hsl(250 90% 70%);
-            background: var(--bg);
-            font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons",
-              "Helvetica Neue";
-            line-height: 1.6;
-            color: var(--color);
-          }
-
-          body::before {
-            --line: color-mix(in lch, canvasText, transparent 65%);
-            --size: 40px;
-            content: "";
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            background: linear-gradient(
-                  90deg,
-                  var(--line) 1px,
-                  transparent 1px var(--size)
-                )
-                0 -5vmin / var(--size) var(--size),
-              linear-gradient(var(--line) 1px, transparent 1px var(--size)) 0 -5vmin /
-                var(--size) var(--size);
-            mask: linear-gradient(-15deg, transparent 80%, white);
-            top: 0;
-            z-index: -1;
-          }
-          p::selection {
-            background: var(--accent);
-          }
-          p:first-of-type {
-            font-weight: 600;
-            text-wrap: balance;
-            line-height: 1.2;
-          }
-          p:not(:first-of-type) {
-            opacity: 0.875;
-            font-weight: 300;
-          }
-          p {
-            padding: 0;
-            margin: 0;
-          }
-        }
-
-        h1 {
-          font-size: 1.5rem;
-          margin: 0;
-          position: relative;
-          display: inline-block;
-          align-self: start;
-        }
-
-        h1 span {
-          position: absolute;
-          left: calc(100% + 0.25ch);
-          bottom: 50%;
-          font-size: 0.5em;
-          color: var(--accent);
-        }
-
         @layer scroller {
           .resizer {
             --bg: color-mix(in lch, canvas, canvasText 2%);
@@ -304,27 +229,6 @@ export const TextScroller = ({ children }) => {
                 --trigger-down: 0;
               }
             }
-          }
-        }
-
-        @layer socials {
-          .bear-link {
-            color: currentColor;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            width: 48px;
-            aspect-ratio: 1;
-            display: grid;
-            place-items: center;
-            opacity: 0.8;
-          }
-
-          :where(.x-link, .bear-link):is(:hover, :focus-visible) {
-            opacity: 1;
-          }
-          .bear-link svg {
-            width: 75%;
           }
         }
 

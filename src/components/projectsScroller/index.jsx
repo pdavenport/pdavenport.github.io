@@ -49,6 +49,8 @@ export const ProjectsScroller = () => {
           src={"/terminalPreview.PNG"}
           quality={50}
           className="object-cover z-0 mt-5 mx-auto max-w-80"
+          width={320}
+          height={248}
         />
 
         <Link
@@ -72,6 +74,8 @@ export const ProjectsScroller = () => {
           alt="studymatch"
           src={"/studymatch.PNG"}
           quality={50}
+          width={320}
+          height={156}
           className="object-cover z-0 mt-5 mx-auto max-w-80"
         />
         <a

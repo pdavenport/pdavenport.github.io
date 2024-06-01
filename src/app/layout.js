@@ -16,3 +16,9 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+// temp:
+// <meta http-equiv="Content-Security-Policy" content="default-src 'self'; worker-src 'self' blob:; report-uri https://your-report-uri"></meta>
+{/* <Head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; worker-src 'self' blob:; report-uri https://your-report-uri" />
+      </Head> */}

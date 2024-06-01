@@ -10,11 +10,11 @@ from 90deg at 50% 50%,
 #ff1800, #ff0000)
 50% 50% / 200% 200% border-box;`;
 const aboutGlow = `conic-gradient(
-from var(--angle, 0deg) in hsl longer hue,
-hsl(10 90% 70%),
-hsl(10 90% 70%)
-)
-50% 50% / 200% 200% border-box;`;
+  from 90deg at 50% 50%, 
+  #d400ff, #7171ff, #009dff, 
+  #00bcff, #00d3ff, #00e5ff, 
+  #00f3f3, #00f3f3)
+  50% 50% / 200% 200% border-box;`;
 const projectsGlow = `conic-gradient(
   from 90deg at 50% 50%, 
   #f72119, #f81b14, #f91610, 
@@ -22,11 +22,11 @@ const projectsGlow = `conic-gradient(
   #f90201, #f70000)
 50% 50% / 200% 200% border-box;`;
 const contactGlow = `conic-gradient(
-from var(--angle, 0deg) in hsl longer hue,
-hsl(10 90% 70%),
-hsl(10 90% 70%)
-)
-50% 50% / 200% 200% border-box;`;
+  from 90deg at 50% 50%, 
+  #d400ff, #7171ff, #009dff, 
+  #00bcff, #00d3ff, #00e5ff, 
+  #00f3f3, #00f3f3)
+  50% 50% / 200% 200% border-box;`;
 
 const homeShadow = `0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00,
