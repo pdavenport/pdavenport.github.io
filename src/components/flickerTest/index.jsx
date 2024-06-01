@@ -7,16 +7,34 @@ export const FlickerTest = () => {
     <>
       <section>
         <div className="hero-container">
+          {/* mobile */}
           <h2
-            className={`${startAnimation && "glitch layers"} hero`}
+            className={`${
+              startAnimation && "glitch layers"
+            } hero md:hidden block`}
             data-text="Click Me"
           >
             <span
-              className={`hover:text-slate-200 font-bold ${nicky.className}`}
+              className={`hover:text-slate-200 font-bold ${nicky.className} md:hidden block`}
               onMouseOver={() => setStartAnimation(true)}
               onMouseLeave={() => setStartAnimation(false)}
             >
               Click Me
+            </span>
+          </h2>
+          {/* desktop */}
+          <h2
+            className={`${
+              startAnimation && "glitch layers"
+            } hero hidden md:block`}
+            data-text="Hover Me"
+          >
+            <span
+              className={`hover:text-slate-200 font-bold ${nicky.className} hidden md:block`}
+              onMouseOver={() => setStartAnimation(true)}
+              onMouseLeave={() => setStartAnimation(false)}
+            >
+              Hover Me
             </span>
           </h2>
         </div>

@@ -1,18 +1,39 @@
 import { nicky } from "@/app/fonts";
+import { useRef, useEffect } from "react";
 export const MaskedText = () => {
+  const headlineElement = useRef(null);
+
+  useEffect(() => {
+    let animationId = null;
+    // make sure the element is mounted before trying to animate
+    if (headlineElement.current) {
+      let angle = 180;
+      const animate = () => {
+        angle = (angle + 0.5) % 720;
+        if (angle > 540) angle = 180;
+        // make sure the element is still mounted before trying to animate
+        // (most applicable when navigating away from the page before the animation is done)
+        if (headlineElement.current) {
+          headlineElement.current.style.setProperty("--angle", `${angle}deg`);
+        }
+        animationId = requestAnimationFrame(animate);
+      };
+      animate();
+    }
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
   return (
     <>
-      <div
-        data-gradient={true}
-        data-animate={true}
-        style={{
-          "--highlight": 4,
-          "--spread": 4,
-          "--primary": "#ffffff",
-          "--secondary": "#606060",
-        }}
-      >
-        <h1 className={`leading-none bg-no-repeat ${nicky.className}`}>
+      <div data-gradient={true} data-animate={true}>
+        <h1
+          className={`leading-none bg-no-repeat ${nicky.className}`}
+          ref={headlineElement}
+        >
           L&apos;amore dice Ciao
         </h1>
       </div>
@@ -27,34 +48,14 @@ export const MaskedText = () => {
               #4dffbf 288.0000042915344deg,
               hsla(0, 0%, 98%, 1) 1turn
             ),
-            linear-gradient(
-              var(--secondary) 0 calc(var(--spread, 4) * 1lh),
-              transparent
-            );
-          background-size: 100% calc(var(--highlight) * 1lh),
-            100% calc(100% - (var(--highlight) * 1lh));
-          background-position: 0 0, 0 calc(var(--highlight) * 1lh);
+            linear-gradient(#606060 0 calc(4 * 1lh), transparent);
+          background-size: 100% calc(4 * 1lh), 100% calc(100% - (4 * 1lh));
+          background-position: 0 0, 0 calc(4 * 1lh);
           background-clip: text;
           color: transparent;
           text-wrap: balance;
-          font-size: 40px;
+          font-size: 80px;
           display: inline-block;
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-          @property --angle {
-            inherits: true;
-            initial-value: 180deg;
-            syntax: "<angle>";
-          }
-          @keyframes rotate {
-            to {
-              --angle: 540deg;
-            }
-          }
-          [data-gradient="true"][data-animate="true"] {
-            animation: rotate 6s infinite linear;
-          }
         }
       `}</style>
     </>

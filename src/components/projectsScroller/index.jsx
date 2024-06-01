@@ -178,8 +178,11 @@ export const ProjectsScroller = () => {
           <MaskedText />
         </div>
         <p className=" mt-5 mx-6">
-          Another Jhey classic, this is simply a concical gradient background,
-          rotating behind some clip masked text.
+          This is a concical gradient background rotating behind some clip
+          masked text. This originally was from @Jhey but animating css
+          variables in gradients isn't well supported on firefox. To support
+          this effect on firefox I used JS to increment the angle variable and
+          then update it via "requestAnimationFrame".
         </p>
 
         <div id="glitcheffect" />

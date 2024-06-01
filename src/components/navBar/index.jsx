@@ -68,12 +68,21 @@ export const Navbar = () => {
               onMouseOut={stopAnimations}
             >
               <div className="hover:bg-black color-white block font-bold text-center decoration-none transition-all ease-in-out duration-250">
-                <div className={`glitch ${nicky.className}`}>
+                <div className={`glitch ${nicky.className} hidden md:block`}>
                   {Array(9)
                     .fill()
                     .map((_, i) => (
                       <div key={link.label + i} className="line">
-                        <p className="text-5xl p-2">{link.label}</p>
+                        <p className="text-5xl p-2">Hover Me</p>
+                      </div>
+                    ))}
+                </div>
+                <div className={`glitch ${nicky.className} md:hidden block`}>
+                  {Array(9)
+                    .fill()
+                    .map((_, i) => (
+                      <div key={link.label + i} className="line">
+                        <p className="text-5xl p-2">Click Me</p>
                       </div>
                     ))}
                 </div>
