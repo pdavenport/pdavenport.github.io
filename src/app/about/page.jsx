@@ -18,11 +18,6 @@ export default function About() {
         }}
       >
         <HeadlineRotation />
-        <h1
-          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] inline-block md:hidden`}
-        >
-          I&apos;m glad you&apos;re here.
-        </h1>
       </div>
       <p>My name is Peter, I&apos;m a senior full-stack dev at IBM.</p>
       <p className={nicky.className}>
