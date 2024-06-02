@@ -14,30 +14,6 @@ export const ProjectsScroller = () => {
   return (
     <>
       <div className="bg-black bg-opacity-50 w-screen h-[500px] md:w-[500px] z-30 overflow-y-scroll rounded-lg md:px-5 px-0 md:bg-opacity-75">
-        <div className="md:hidden drop-shadow-[0_2px_15px_rgba(255,0,0,1)] absolute bottom-0 z-50 bg-black">
-          <ul className="transition-all rounded-lg flex flex-row overflow-x-scroll overflow-y-hidden flex-nowrap whitespace-nowrap w-screen items-center gap-4">
-            <h2
-              className={
-                "text-center my-4 text-white font-thin text-xl pl-4 md:pl-0"
-              }
-            >
-              PROJECTS:
-            </h2>
-            {anchorLinks1.map((link, index) => (
-              <li className="text-white" key={link.text}>
-                <a href={link.href}>{link.text}</a>
-              </li>
-            ))}
-            <h2 className={`text-center my-4 text-white font-thin text-xl`}>
-              EXPERIMENTS:
-            </h2>
-            {anchorLinks2.map((link, index) => (
-              <li className="text-white" key={link.text}>
-                <a href={link.href}>{link.text}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
         <div id="bestintravel" />
         <h2 className="text-3xl font-thin text-center mt-10">Best In Travel</h2>
         <h3 className="text-xl font-thin text-center mb-2">-Lonely Planet</h3>
