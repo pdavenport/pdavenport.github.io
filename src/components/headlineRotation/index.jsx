@@ -32,7 +32,7 @@ export const HeadlineRotation = () => {
     <>
       <h1
         ref={headlineElement}
-        className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] hidden md:inline-block md:max-w-full`}
+        className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] md:max-w-full`}
       >
         I&apos;m glad you&apos;re here.
       </h1>
