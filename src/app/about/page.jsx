@@ -116,7 +116,7 @@ export default function About() {
       <div className="absolute z-20 hidden md:flex">
         <TextScroller>{text}</TextScroller>
       </div>
-      <div className="absolute z-20 md:hidden flex w-80 textcontainer rounded-[12px] p-6 none">
+      <div className="absolute z-20 md:hidden flex w-80 textcontainer rounded-[12px] p-6 none bg-opacity-75 bg-black top-20 md:top-auto max-h-[500px] overflow-y-scroll">
         {text}
       </div>
       <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
@@ -124,7 +124,8 @@ export default function About() {
       </div>
       <style jsx>{`
         .textcontainer {
-          background: color-mix(in lch, #000000, #ffffff 2%);
+          // background: color-mix(in lch, #000000, #ffffff 2%);
+          // background-opacity: 0.5;
           scrollbar-width: thin;
           scrollbar-color: var(--accent) transparent;
           gap: 1rem;
