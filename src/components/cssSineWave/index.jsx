@@ -7,7 +7,7 @@ export const CssSineWave = () => {
     const isMobile = window.innerWidth <= 500;
     setRings(Array.from({ length: isMobile ? 10 : 20 }, (_, i) => i + 1));
   }, []);
-  // TODO: make mobile background opacity
+
   return (
     <>
       <div className="rings max-w-[300px] aspect-square relative m-auto">

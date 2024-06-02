@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { anchorLinks1, anchorLinks2 } from "@/constants/constants";
 
 export const AnchorNavBar = () => {
   const navRef = useRef(null);
@@ -91,52 +92,27 @@ export const AnchorNavBar = () => {
           >
             PROJECTS
           </h2>
-
-          {/* This could be a map but TODO if I have time */}
-
-          <li className="hover:text-white md:self-start">
-            <a href="#bestintravel" onPointerEnter={falloff(0)}>
-              Best In Travel
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#terminaladdiction" onPointerEnter={falloff(1)}>
-              Terminal Addiction
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#studymatch" onPointerEnter={falloff(2)}>
-              Study Match
-            </a>
-          </li>
+          {anchorLinks1.map((link, index) => (
+            <li
+              className="hover:text-white self-start"
+              key={link.text}
+              onPointerEnter={falloff(index)}
+            >
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))}
           <h2 className={`text-center my-4 text-white font-thin text-xl`}>
             EXPERIMENTS
           </h2>
-          <li className="hover:text-white md:self-start">
-            <a href="#csssinewave" onPointerEnter={falloff(3)}>
-              CSS Sine Waves
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#flickereffect" onPointerEnter={falloff(4)}>
-              Flicker Effect
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#snoweffect" onPointerEnter={falloff(5)}>
-              Snow Effect
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#maskedtext" onPointerEnter={falloff(6)}>
-              Masked Text
-            </a>
-          </li>
-          <li className="hover:text-white md:self-start">
-            <a href="#glitcheffect" onPointerEnter={falloff(7)}>
-              Glitch Effect
-            </a>
-          </li>
+          {anchorLinks2.map((link, index) => (
+            <li
+              className="hover:text-white self-start"
+              key={link.text}
+              onPointerEnter={falloff(index + anchorLinks1.length + 1)}
+            >
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -249,25 +225,6 @@ export const AnchorNavBar = () => {
           width: 75%;
         }
 
-        .bear-link {
-          color: #ffffff;
-          position: fixed;
-          top: 1rem;
-          left: 1rem;
-          width: 48px;
-          aspect-ratio: 1;
-          display: grid;
-          place-items: center;
-          opacity: 0.8;
-        }
-
-        :where(.x-link, .bear-link):is(:hover, :focus-visible) {
-          opacity: 1;
-        }
-        .bear-link svg {
-          width: 75%;
-        }
-
         li {
           font-weight: 400;
         }
@@ -367,6 +324,18 @@ export const AnchorNavBar = () => {
           --target-width: var(--item-6-width);
           --target-height: var(--item-6-height);
         }
+        [data-no-anchor] ul:has(li:nth-of-type(7) a:target) {
+          --target-y: var(--item-7-y);
+          --target-x: var(--item-7-x);
+          --target-width: var(--item-7-width);
+          --target-height: var(--item-7-height);
+        }
+        [data-no-anchor] ul:has(li:nth-of-type(8) a:target) {
+          --target-y: var(--item-8-y);
+          --target-x: var(--item-8-x);
+          --target-width: var(--item-8-width);
+          --target-height: var(--item-8-height);
+        }
 
         ul:has(a:is(:focus-visible, :hover)) {
           --intent: 1;
@@ -444,6 +413,12 @@ export const AnchorNavBar = () => {
           nav li:nth-of-type(6) {
             anchor-name: --item-6;
           }
+          nav li:nth-of-type(7) {
+            anchor-name: --item-7;
+          }
+          nav li:nth-of-type(8) {
+            anchor-name: --item-8;
+          }
 
           nav:has(li:nth-of-type(1) a:is(:hover, :focus-visible)) {
             --anchor: --item-1;
@@ -463,6 +438,12 @@ export const AnchorNavBar = () => {
           nav:has(li:nth-of-type(6) a:is(:hover, :focus-visible)) {
             --anchor: --item-6;
           }
+          nav:has(li:nth-of-type(7) a:is(:hover, :focus-visible)) {
+            --anchor: --item-7;
+          }
+          nav:has(li:nth-of-type(8) a:is(:hover, :focus-visible)) {
+            --anchor: --item-8;
+          }
 
           nav:has(li:nth-of-type(1) a:target) {
             --target: --item-1;
@@ -481,6 +462,12 @@ export const AnchorNavBar = () => {
           }
           nav:has(li:nth-of-type(6) a:target) {
             --target: --item-6;
+          }
+          nav:has(li:nth-of-type(7) a:target) {
+            --target: --item-7;
+          }
+          nav:has(li:nth-of-type(8) a:target) {
+            --target: --item-8;
           }
 
           ul::before {

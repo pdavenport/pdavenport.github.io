@@ -6,7 +6,7 @@ import snowflake1 from "@public/snowflake1.png";
 import { Application, Assets, Sprite, Container } from "pixi.js";
 import { gsap } from "gsap";
 import { AnchorNavBar } from "@/components/anchorNavBar";
-import { palmore } from "@/app/fonts";
+import { nicky } from "@/app/fonts";
 import { ProjectsScroller } from "@/components/projectsScroller";
 
 const random = (min, max) => {
@@ -89,9 +89,9 @@ export default function ProjectsPage() {
         ref={canvasRef}
         className="md:z-10 h-screen w-screen overflow-hidden absolute"
       ></div>
-      <div className="absolute md:z-0 z-40 top-10 md:top-32">
-        <h1 className={`text-9xl headline p-2 font-bold ${palmore.className}`}>
-          PROJECTS
+      <div className="absolute md:z-0 z-40 md:top-32 top-20">
+        <h1 className={`md:text-8xl text-5xl headline p-2 ${nicky.className}`}>
+          Projects
         </h1>
       </div>
       <div className="absolute md:relative bottom-0 flex gap-10 md:flex-row flex-col mt-20">
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
           -webkit-text-stroke-color: #2b2b2b;
 
           &:before {
-            content: "PROJECTS";
+            content: "Projects";
             position: absolute;
             top: 0;
             left: 0;
@@ -145,7 +145,7 @@ export default function ProjectsPage() {
             -webkit-text-stroke-color: red;
           }
           &:after {
-            content: "PROJECTS";
+            content: "Projects";
             position: absolute;
             top: 0;
             left: 0;

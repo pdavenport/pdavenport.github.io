@@ -4,9 +4,6 @@ import { TextScroller } from "@/components/textScroller";
 import { nicky } from "../fonts";
 import { useRef, useEffect } from "react";
 
-// TODO: see about optimizing css rings
-// TODO: rotating bg isn't handled well on mobile, remove?
-
 export default function About() {
   const headlineElement = useRef(null);
 
@@ -116,7 +113,7 @@ export default function About() {
       <div className="absolute z-20 hidden md:flex">
         <TextScroller>{text}</TextScroller>
       </div>
-      <div className="absolute z-20 md:hidden flex w-80 textcontainer rounded-[12px] p-6 none bg-opacity-75 bg-black top-20 md:top-auto max-h-[500px] overflow-y-scroll">
+      <div className="absolute z-20 md:hidden flex w-80 textcontainer rounded-[12px] p-6 none bg-opacity-75 bg-black top-20 md:top-auto max-h-[500px] overflow-y-scroll shadow-[inset_0_10px_25px_0px_rgba(255,255,255,0.3)]">
         {text}
       </div>
       <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
