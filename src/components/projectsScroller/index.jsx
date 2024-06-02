@@ -3,9 +3,7 @@ import { CssSineWave } from "../cssSineWave";
 import { FlickerTest } from "../flickerTest";
 import { MaskedText } from "../maskedText";
 import { Navbar } from "../navBar";
-import { AnchorNavBar } from "../anchorNavBar";
 import Image from "next/image";
-import { anchorLinks1, anchorLinks2 } from "@/constants/constants";
 
 // TODO: make descriptions more technical
 // TODO: add stop snow button
@@ -13,7 +11,7 @@ import { anchorLinks1, anchorLinks2 } from "@/constants/constants";
 export const ProjectsScroller = () => {
   return (
     <>
-      <div className="bg-black bg-opacity-50 w-screen h-[500px] md:w-[500px] z-30 overflow-y-scroll rounded-lg md:px-5 px-0 md:bg-opacity-75">
+      <div className="backdrop-blur w-screen h-[500px] md:w-[500px] z-30 overflow-y-scroll rounded-lg md:px-5 px-0 md:shadow-[inset_0_10px_25px_0px_rgba(0,0,0,0.8)] scrollbar-width-thin">
         <div id="bestintravel" />
         <h2 className="text-3xl font-thin text-center mt-10">Best In Travel</h2>
         <h3 className="text-xl font-thin text-center mb-2">-Lonely Planet</h3>

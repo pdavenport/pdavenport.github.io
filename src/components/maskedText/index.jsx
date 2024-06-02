@@ -1,3 +1,4 @@
+"use client";
 import { nicky } from "@/app/fonts";
 import { useRef, useEffect } from "react";
 export const MaskedText = () => {

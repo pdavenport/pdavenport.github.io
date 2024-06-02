@@ -1,37 +1,9 @@
-"use client";
 import { CssSineWave } from "@/components/cssSineWave";
 import { TextScroller } from "@/components/textScroller";
 import { nicky } from "../fonts";
-import { useRef, useEffect } from "react";
+import { HeadlineRotation } from "@/components/headlineRotation";
 
 export default function About() {
-  const headlineElement = useRef(null);
-
-  useEffect(() => {
-    let animationId = null;
-    // make sure the element is mounted before trying to animate
-    if (headlineElement.current) {
-      let angle = 180;
-      const animate = () => {
-        angle = (angle + 0.25) % 720;
-        if (angle > 540) angle = 180;
-        // make sure the element is still mounted before trying to animate
-        // (most applicable when navigating away from the page before the animation is done)
-        if (headlineElement.current) {
-          headlineElement.current.style.setProperty("--angle", `${angle}deg`);
-        }
-        animationId = requestAnimationFrame(animate);
-      };
-      animate();
-    }
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, []);
-
   const text = (
     <>
       <div
@@ -45,12 +17,7 @@ export default function About() {
           "--secondary": "#606060",
         }}
       >
-        <h1
-          ref={headlineElement}
-          className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] hidden md:inline-block md:max-w-full`}
-        >
-          I&apos;m glad you&apos;re here.
-        </h1>
+        <HeadlineRotation />
         <h1
           className={`${nicky.className} font-thin leading-none bg-no-repeat headline text-5xl max-w-[290px] inline-block md:hidden`}
         >
@@ -76,35 +43,6 @@ export default function About() {
       <h2 className={`text-right ${nicky.className} text-3xl italic`}>
         - Peter
       </h2>
-      <style jsx>{`
-        .headline {
-          background: conic-gradient(
-              from var(--angle, 180deg) at 50% 70%,
-              #d400ff 0deg,
-              #7171ff 25deg,
-              #009dff 50deg,
-              #00bcff 75deg,
-              #00d3ff 100deg,
-              #00e5ff 125deg,
-              #00f3f3 150deg,
-              #00ffd5 175deg,
-              #00f3f3 200deg,
-              #00e5ff 225deg,
-              #00d3ff 250deg,
-              #00bcff 275deg,
-              #009dff 300deg,
-              #7171ff 325deg,
-              #d400ff 1turn
-            ),
-            linear-gradient(#606060 0 calc(4 * 1lh), transparent);
-          background-size: 100% calc(var(--highlight) * 1lh),
-            100% calc(100% - (var(--highlight) * 1lh));
-          background-position: 0 0, 0 calc(var(--highlight) * 1lh);
-          background-clip: text;
-          color: transparent;
-          text-wrap: balance;
-        }
-      `}</style>
     </>
   );
 
@@ -113,22 +51,12 @@ export default function About() {
       <div className="absolute z-20 hidden md:flex">
         <TextScroller>{text}</TextScroller>
       </div>
-      <div className="absolute z-20 md:hidden flex w-80 textcontainer rounded-[12px] p-6 none bg-opacity-75 bg-black top-20 md:top-auto max-h-[500px] overflow-y-scroll shadow-[inset_0_10px_25px_0px_rgba(255,255,255,0.3)]">
+      <div className="backdrop-blur-sm absolute z-20 md:hidden flex w-80 textcontainer scrollbar-width-thin rounded-[12px] p-6 none top-20 md:top-auto max-h-[500px] overflow-y-scroll shadow-[inset_0_10px_25px_0px_rgba(255,255,255,0.2)] gap-4 flex-col">
         {text}
       </div>
       <div className="absolute z-10 w-screen h-screen overflow-hidden flex justify-center">
         <CssSineWave />
       </div>
-      <style jsx>{`
-        .textcontainer {
-          // background: color-mix(in lch, #000000, #ffffff 2%);
-          // background-opacity: 0.5;
-          scrollbar-width: thin;
-          scrollbar-color: var(--accent) transparent;
-          gap: 1rem;
-          flex-direction: column;
-        }
-      `}</style>
     </>
   );
 }

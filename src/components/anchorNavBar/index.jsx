@@ -84,7 +84,7 @@ export const AnchorNavBar = () => {
         onBlur={deactivate}
         onPointerLeave={deactivate}
       >
-        <ul className="transition-all md:rounded rounded-lg flex flex-row md:flex-col overflow-x-scroll overflow-y-hidden flex-nowrap whitespace-nowrap w-screen md:w-auto items-center">
+        <ul className="transition-all rounded-lg flex flex-col overflow-hidden flex-nowrap whitespace-nowrap items-center">
           <h2
             className={
               "text-center my-4 text-white font-thin text-xl pl-4 md:pl-0"
@@ -108,7 +108,7 @@ export const AnchorNavBar = () => {
             <li
               className="hover:text-white self-start"
               key={link.text}
-              onPointerEnter={falloff(index + anchorLinks1.length + 1)}
+              onPointerEnter={falloff(index + anchorLinks1.length)}
             >
               <a href={link.href}>{link.text}</a>
             </li>

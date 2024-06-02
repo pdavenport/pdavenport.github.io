@@ -1,66 +1,16 @@
 "use client";
 import React from "react";
-import { useRef, useEffect, useCallback } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
 export const TextScroller = ({ children }) => {
-  const scrollerRef = useRef(null);
-  const createScrollTrigger = useCallback((start, end, property) => {
-    const trigger = ScrollTrigger.create({
-      scroller: scrollerRef.current,
-      trigger: "article",
-      scrub: true,
-      ease: "none",
-      start,
-      end,
-      onUpdate: (self) => {
-        scrollerRef.current.style.setProperty(property, self.progress * 100);
-      },
-    });
-    return trigger;
-  }, []);
-
-  useEffect(() => {
-    ScrollTrigger.refresh();
-    let triggers = [];
-    let obs;
-
-    if (!CSS.supports("animation-timeline: scroll()")) {
-      gsap.registerPlugin(ScrollTrigger);
-
-      triggers.push(createScrollTrigger(0, () => 120, "--scroll-progress-top"));
-      triggers.push(
-        createScrollTrigger(
-          () => ScrollTrigger.maxScroll(scrollerRef.current) - 120 * 1,
-          () => ScrollTrigger.maxScroll(scrollerRef.current),
-          "--scroll-progress-bottom"
-        )
-      );
-
-      obs = new ResizeObserver(ScrollTrigger.refresh);
-      obs.observe(scrollerRef.current);
-    }
-
-    return () => {
-      triggers.forEach((trigger) => trigger.kill());
-      if (obs) {
-        obs.disconnect();
-      }
-    };
-  }, [createScrollTrigger]);
-
   return (
     <div className="md:block hidden">
-      <div className="resizer">
-        <section className="scroller" ref={scrollerRef}>
+      <div className="resizer backdrop-blur-sm">
+        <section className="scroller">
           <article>{children}</article>
         </section>
       </div>
       <style jsx>{`
         @layer scroller {
           .resizer {
-            --bg: color-mix(in lch, #000000, #ffffff 2%);
             width: 36ch;
             aspect-ratio: 3 / 4;
             resize: both;

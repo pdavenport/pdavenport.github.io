@@ -23,9 +23,9 @@ const projectsGlow = `conic-gradient(
 50% 50% / 200% 200% border-box;`;
 const contactGlow = `conic-gradient(
   from 90deg at 50% 50%, 
-  #d400ff, #7171ff, #009dff, 
-  #00bcff, #00d3ff, #00e5ff, 
-  #00f3f3, #00f3f3)
+  #ffa500, #ff8d00, #ff7600, 
+  #ff5e00, #ff4700, #ff2f00, 
+  #ff1800, #ff0000)
   50% 50% / 200% 200% border-box;`;
 
 const homeShadow = `0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
@@ -77,7 +77,7 @@ export const GlowNavBar = () => {
                 <span
                   className={`font-thin text-white ${
                     path === link.href && "textglow"
-                  } text-sm lg:text-3xl neon bg-black bg-opacity-75 rounded p-2 border-2 border-solid border-transparent cursor-pointer relative`}
+                  } text-sm lg:text-xl neon bg-black bg-opacity-75 rounded-full px-4 md:px-6 py-2 border-2 border-solid border-transparent cursor-pointer relative`}
                 >
                   {link.label}
                 </span>
@@ -107,7 +107,6 @@ export const GlowNavBar = () => {
           translate: -50% 0;
           z-index: -1;
           background: ${currentGlow};
-          border-radius: 50% 50% 12px 12px / 20px 20px 12px 12px;
           filter: blur(calc(10 * 1px)) brightness(calc(1.25));
           scale: calc((0.5 + (var(--intent, 0) * 0.46)) - var(--active, 0));
           transition: scale 0.25s;
@@ -118,7 +117,6 @@ export const GlowNavBar = () => {
           position: absolute;
           inset: calc(2 * -1px);
           pointer-events: none;
-          border: calc(2 * 1px) solid hsl(0 0% 0% / 0.3);
           opacity: calc(1 - var(--intent, 0));
           transition: opacity 0.25s;
         }

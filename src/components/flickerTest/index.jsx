@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { nicky } from "@/app/fonts";
 export const FlickerTest = () => {
