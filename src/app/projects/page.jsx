@@ -94,7 +94,7 @@ export default function ProjectsPage() {
           Projects
         </h1>
       </div>
-      <div className="absolute md:relative bottom-0 flex gap-10 md:flex-row flex-col mt-20">
+      <div className="absolute md:relative bottom-0 flex gap-10 md:flex-row flex-col mt-20 max-h-screen">
         <div className="md:z-40 bg-black rounded-lg anchornav hidden md:block">
           <AnchorNavBar />
         </div>

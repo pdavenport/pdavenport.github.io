@@ -21,7 +21,7 @@ export const ProjectsScroller = () => {
                 "text-center my-4 text-white font-thin text-xl pl-4 md:pl-0"
               }
             >
-              PROJECTS
+              PROJECTS:
             </h2>
             {anchorLinks1.map((link, index) => (
               <li className="text-white" key={link.text}>
@@ -29,7 +29,7 @@ export const ProjectsScroller = () => {
               </li>
             ))}
             <h2 className={`text-center my-4 text-white font-thin text-xl`}>
-              EXPERIMENTS
+              EXPERIMENTS:
             </h2>
             {anchorLinks2.map((link, index) => (
               <li className="text-white" key={link.text}>
