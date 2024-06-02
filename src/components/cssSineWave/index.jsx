@@ -35,14 +35,6 @@ export const CssSineWave = () => {
             rotateX(90deg);
         }
 
-        // @media (max-width: 500px) {
-        //   .rings {
-        //     width: 20vmin;
-        //     transform: translate3d(0, 0, 100vmin) rotateX(-32deg)
-        //       rotateY(-32deg) rotateX(90deg);
-        //   }
-        // }
-
         .ring {
           --count: 20;
           --scale-base: calc(((100 / 20) * var(--index)) * 1%);

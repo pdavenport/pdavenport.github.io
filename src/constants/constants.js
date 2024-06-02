@@ -6,6 +6,7 @@ export const anchorLinks1 = [
   ];
 
 export const anchorLinks2 = [
+    { href: "#spotify", text: "Spotify Status" },
     { href: "#csssinewave", text: "CSS Sine Waves" },
     { href: "#flickereffect", text: "Flicker Effect" },
     { href: "#snoweffect", text: "Snow Effect" },

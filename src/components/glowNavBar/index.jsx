@@ -45,17 +45,17 @@ export const GlowNavBar = () => {
   const path = usePathname();
 
   const links = [
-    { href: "/", label: "Home", glow: homeGlow, shadow: homeShadow },
-    { href: "/about", label: "About Me", glow: aboutGlow, shadow: aboutShadow },
+    { href: "/", label: "HOME", glow: homeGlow, shadow: homeShadow },
+    { href: "/about", label: "ABOUT", glow: aboutGlow, shadow: aboutShadow },
     {
       href: "/projects",
-      label: "Projects",
+      label: "PROJECTS",
       glow: projectsGlow,
       shadow: projectsShadow,
     },
     {
       href: "/contact",
-      label: "Contact",
+      label: "CONTACT",
       glow: contactGlow,
       shadow: contactShadow,
     },

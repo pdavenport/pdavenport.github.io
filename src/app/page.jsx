@@ -2,8 +2,6 @@ import { nicky } from "./fonts";
 import Image from "next/image";
 import nightJapan3 from "../../public/nightJapan3.jpg";
 
-// TODO: better font for nav bar
-
 export default function HomePage() {
   return (
     <>
