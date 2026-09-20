@@ -9,7 +9,7 @@ Security overrides in `package.json` currently pin:
 - `js-yaml` for the YAML merge-key CPU exhaustion advisories
 - `qs` for the legacy `url` dependency DoS advisories
 - `@xmldom/xmldom` for Pixi XML parsing advisories
-- `brace-expansion` under `minimatch` 3, 9, and 10 for the range-expansion DoS advisories
+- `brace-expansion` under `minimatch` 3, `minimatch` 9, and `@typescript-eslint/typescript-estree` for the range-expansion DoS advisories
 
 This Website serves as a little portfolio for work gone by and work to come. Most of my work unfortunately has to live behind NDAs and in private repos but feel free to contact me with any questions :]
 
