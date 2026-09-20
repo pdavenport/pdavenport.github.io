@@ -2,7 +2,7 @@
 
 if you're reading this you're probably checking out some coding I've done
 
-This project now requires Node.js `^20.9.0 || >=22` to install its current toolchain.
+This project now requires Node.js `>=20.9.0` to install its current toolchain. The current lockfile still includes an optional Sharp package that only advertises `^20.9.0` support on 32-bit Windows, so that specific platform may need a future lockfile refresh before using Node 21+.
 
 Security overrides in `package.json` currently pin:
 - `@humanfs/node` for the ESLint symlink-copy advisory
