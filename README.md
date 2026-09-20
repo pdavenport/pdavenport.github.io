@@ -2,7 +2,7 @@
 
 if you're reading this you're probably checking out some coding I've done
 
-This project now requires Node.js 20.9+ overall because the upgraded `next` and `sharp` dependencies no longer support older Node releases. On 32-bit Windows, Sharp’s optional image-optimization package currently only advertises `^20.9.0` support, so Node 21+ may still leave image optimization unavailable on that specific platform.
+This project now requires Node.js 20.9+ overall because the upgraded `next` and `sharp` dependencies no longer support older Node releases. On 32-bit Windows, Sharp’s optional image-optimization package currently advertises `^20.9.0` support, so that platform should stay on Node 20.x for now.
 
 Security overrides in `package.json` currently pin:
 - `@humanfs/node` for the ESLint symlink-copy advisory
