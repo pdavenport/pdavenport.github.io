@@ -8,7 +8,7 @@ The npm `overrides` block in `package.json` is temporary security glue for upstr
 - `@eslint/eslintrc -> js-yaml@4.3.2`
   - Advisories: YAML merge-key CPU exhaustion issues in older `js-yaml`.
   - Remove when `@eslint/eslintrc` updates its `js-yaml` dependency.
-- `url -> qs@6.16.0`
+- `@pixi/particles -> url -> qs@6.16.0`
   - Advisories: legacy `qs` denial-of-service issues in the Pixi utility chain.
   - Remove when the `@pixi/particles` / `@pixi/utils` / `url` chain no longer resolves vulnerable `qs`.
 - `pixi.js -> @xmldom/xmldom@0.8.15`
