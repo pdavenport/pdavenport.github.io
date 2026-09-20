@@ -29,10 +29,18 @@
     "tailwindcss": "^3.4.19"
   },
   "overrides": {
-    "@humanfs/node": "0.16.8",
-    "js-yaml": "4.3.2",
-    "qs": "6.16.0",
-    "@xmldom/xmldom": "0.8.15",
+    "eslint": {
+      "@humanfs/node": "0.16.8"
+    },
+    "@eslint/eslintrc": {
+      "js-yaml": "4.3.2"
+    },
+    "url": {
+      "qs": "6.16.0"
+    },
+    "pixi.js": {
+      "@xmldom/xmldom": "0.8.15"
+    },
     "minimatch@3": {
       "brace-expansion": "1.1.18"
     },
