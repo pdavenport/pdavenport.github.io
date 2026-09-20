@@ -2,7 +2,7 @@
 
 if you're reading this you're probably checking out some coding I've done
 
-This project now requires Node.js 20.9.x or 22+ to install its current toolchain.
+This project now requires Node.js `^20.9.0 || >=22` to install its current toolchain.
 
 Security overrides in `package.json` currently pin:
 - `@humanfs/node` for the ESLint symlink-copy advisory
