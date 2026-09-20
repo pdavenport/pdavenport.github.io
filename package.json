@@ -33,9 +33,7 @@
     "js-yaml": "4.3.2",
     "qs": "6.16.0",
     "@xmldom/xmldom": "0.8.15",
-    "eslint-plugin-react-hooks": {
-      "@babel/core": "7.29.7"
-    },
+    "@babel/core": "7.29.7",
     "minimatch@3": {
       "brace-expansion": "1.1.18"
     },
