@@ -9,7 +9,7 @@ Security overrides in `package.json` currently pin:
 - `@eslint/eslintrc -> js-yaml` for the YAML merge-key CPU exhaustion advisories; remove once `@eslint/eslintrc` updates its dependency
 - `url -> qs` for the legacy `url` dependency DoS advisories; remove once the Pixi utility chain no longer resolves the vulnerable `qs`
 - `pixi.js -> @xmldom/xmldom` for Pixi XML parsing advisories; remove once Pixi resolves a patched `@xmldom/xmldom` itself
-- `minimatch` 3, `minimatch` 9, and `eslint-config-next -> brace-expansion` for the range-expansion DoS advisories; remove once those parents ship patched `brace-expansion` paths
+- `eslint -> minimatch`, `tailwindcss -> sucrase`, and `eslint-config-next -> @typescript-eslint/typescript-estree` for the range-expansion `brace-expansion` DoS advisories; remove once those parents ship patched dependency paths
 
 This Website serves as a little portfolio for work gone by and work to come. Most of my work unfortunately has to live behind NDAs and in private repos but feel free to contact me with any questions :]
 

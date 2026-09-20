@@ -30,7 +30,10 @@
   },
   "overrides": {
     "eslint": {
-      "@humanfs/node": "0.16.8"
+      "@humanfs/node": "0.16.8",
+      "minimatch": {
+        "brace-expansion": "1.1.18"
+      }
     },
     "@eslint/eslintrc": {
       "js-yaml": "4.3.2"
@@ -42,13 +45,14 @@
       "@xmldom/xmldom": "0.8.15"
     },
     "eslint-config-next": {
-      "brace-expansion": "5.0.9"
+      "@typescript-eslint/typescript-estree": {
+        "brace-expansion": "5.0.9"
+      }
     },
-    "minimatch@3": {
-      "brace-expansion": "1.1.18"
-    },
-    "minimatch@9": {
-      "brace-expansion": "2.1.4"
+    "tailwindcss": {
+      "sucrase": {
+        "brace-expansion": "2.1.4"
+      }
     }
   }
 }
