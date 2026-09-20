@@ -34,9 +34,7 @@
   "overrides": {
     "eslint": {
       "@humanfs/node": "0.16.8",
-      "minimatch": {
-        "brace-expansion": "1.1.18"
-      }
+      "brace-expansion": "1.1.18"
     },
     "@eslint/eslintrc": {
       "js-yaml": "4.3.2"
