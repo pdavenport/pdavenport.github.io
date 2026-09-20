@@ -2,7 +2,7 @@
 
 if you're reading this you're probably checking out some coding I've done
 
-This project now requires Node.js 20.9+ overall because the upgraded `next` and `sharp` dependencies no longer support older Node releases. On 32-bit Windows only, use Node 20.x for now because Sharp’s optional image-optimization package currently advertises `^20.9.0` support on that platform.
+This project now requires Node.js 20.9+ overall because the upgraded `next` and `sharp` dependencies no longer support older Node releases. On 32-bit Windows only, use Node 20.9+ for now because Sharp’s optional image-optimization package currently advertises `^20.9.0` support on that platform.
 
 Security overrides in `package.json` currently pin:
 - `eslint -> @humanfs/node` for the ESLint symlink-copy advisory; remove once ESLint ships a patched transitive version
