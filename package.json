@@ -28,6 +28,7 @@
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.19"
   },
+  "x-security-overrides-doc": "./DEPENDENCY_OVERRIDES.md",
   "overrides": {
     "eslint": {
       "@humanfs/node": "0.16.8",
