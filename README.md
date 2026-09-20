@@ -2,7 +2,7 @@
 
 if you're reading this you're probably checking out some coding I've done
 
-This project now requires Node.js `>=20.9.0` to install its current toolchain. The optional Sharp package for 32-bit Windows currently only advertises `^20.9.0` support, so Node 21+ is still not supported on that specific platform.
+This project’s current dependency set is validated on Node.js 20.9+ for local installs. On 32-bit Windows, Sharp’s optional image-optimization package currently only advertises `^20.9.0` support, so image optimization there may still need Node 20.x.
 
 Security overrides in `package.json` currently pin:
 - `@humanfs/node` for the ESLint symlink-copy advisory
